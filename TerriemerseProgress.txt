@@ -1,0 +1,38 @@
+::Rotate and scale tools:
+::161018::
+-Rotate- -CHECK
+	I'll need to get the starting rotation and add to it - there's a function within the move script that should cover that
+
+-Scale- -CHECK
+	Can I throw all of the measurement tool objects into the same group?
+
+
+-Interact with objects- -- CHECK
+	-Use VRTK?- -- No - Too complex and not needed
+	-I need to check if the object is interacting 
+	-This script is going to handle object interaction and events 
+
+	-Each of the objects could have a script that handles the object interaction
+	-A public gameobject to assign the script component 
+		-Which then assigns the script to the controller that selected it  
+
+
+-Measurement and Delete Tool- -- CHECK
+	-Make objects for each of these -- add to the switch statement 
+	-Make delete tool for Measurement tool
+
+	-Had to knock the scale of measurement tool down from::  12 -> .2  and line renderer: 1 -> .1 -- REMEMBER THIS!!!
+
+-Finalize interaction script- -- CHECK
+	-add the delete and measurement tools to the switch statement
+
+
+-Assign all Objects to HoverBelt- 
+	-It may be possible to set everything else up outside the main scene and bring it in that way
+		-Do it that way!
+	-Right now it's not reading intersections from the objects
+		-Perhaps it's reading intersections, but it's not activating the script - CHECK
+	-not registerting when the controller is intersecting with a button / exiting - CHECK
+
+-Get this all set up in the Terrimerse Scene- - CHECK
+

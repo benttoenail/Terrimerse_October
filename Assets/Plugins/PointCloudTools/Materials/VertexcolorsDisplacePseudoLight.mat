@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: VertexcolorsDisplacePseudoLight
+  m_Shader: {fileID: 4800000, guid: f7cba4cab430f094292fe3c648f24648, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs: []
+    m_Floats:
+    - first:
+        name: _Amount
+      second: 3
+    - first:
+        name: _LightLimit
+      second: 15
+    - first:
+        name: _Limit
+      second: 5
+    m_Colors:
+    - first:
+        name: _LightPos
+      second: {r: 9.83, g: 0, b: -1.46, a: 1}
+    - first:
+        name: _Pos
+      second: {r: 9.83, g: 0, b: -1.46, a: 1}
