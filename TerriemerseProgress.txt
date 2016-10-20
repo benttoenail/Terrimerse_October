@@ -42,7 +42,10 @@
 	
 -Add Colliders to Measurement objects- -- CHECK 
 -Make sure the measurement tools are working -- 
-	-Figure out why the Measurement tool is not working!! -- 
+	-Figure out why the Measurement tool is not working!! -- CHECK
 -Make Objects scale when hovered- 
-	-Create script to attach to objects to scale when intersected
+	-Create script to attach to objects to scale when intersected -- CHECK
+	-Make a new Delete tool - Export as FBX -- 
+	-Scale back to oringal size when exit -- 
+	
 

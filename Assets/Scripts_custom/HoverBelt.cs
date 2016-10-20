@@ -118,7 +118,7 @@ public class HoverBelt : MonoBehaviour {
 
     public void ControllerButtonPressed()
     {
-        Debug.Log("A BeltButton was presseaed!!");
+        //Debug.Log("A BeltButton was presseaed!!");
     }
 
     public void ControllerExitedButton()

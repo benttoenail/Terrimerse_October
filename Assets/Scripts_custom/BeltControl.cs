@@ -76,8 +76,6 @@ public class BeltControl : MonoBehaviour {
         {
             StartCoroutine(CloseBelt());
         }
-
-        print(beltButtonCollide);
     }
 
 

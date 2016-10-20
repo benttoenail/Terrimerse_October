@@ -22,6 +22,7 @@ GameObject:
   - 33: {fileID: 33000012985424376}
   - 23: {fileID: 23000014040706552}
   - 65: {fileID: 65000013165222346}
+  - 114: {fileID: 114000013002495754}
   m_Layer: 0
   m_Name: Measurement_obj
   m_TagString: MeasurementTool
@@ -91,3 +92,14 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.07993634, y: 0.10890596, z: 0.07993634}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114000013002495754
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013321180182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 819b363e878d9bc4eae3c3d5632916ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

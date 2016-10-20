@@ -46,7 +46,7 @@ public class DrawMeasurement : MonoBehaviour {
             toolPrefab = Instantiate(measureTool, controller.transform.position, Quaternion.identity) as GameObject;
 
             //int childCount = DataSet.transform.childCount;
-            toolPrefab.transform.parent = GameObject.Find("DataSetCube").transform;
+            toolPrefab.transform.parent = GameObject.FindGameObjectWithTag("DataSet").transform;
 
             sphere02 = toolPrefab.transform.FindChild("Sphere_02");
             sphere02.transform.parent = controller.transform;
