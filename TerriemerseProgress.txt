@@ -53,7 +53,8 @@
 	-At this moment, the scene is not scaling as it should... 
 	-I can't scale the data set, because if I do all of the markers that have been applied will scale as well, thus ruining the measurements
 	-I need to scale the camera rig up and down - that's the best and easiest solution
-		-Except I'm getting awful errors -- For some reason the errors stopped happening??
-		-The belt is not scaling accordingly 
+		-Except I'm getting awful errors -- For some reason the errors stopped happening?? -- Need to divide the scaling down by 500 
+		-The belt is not scaling accordingly
+-Parent objects to the belt -- CHECK 
 	
 
