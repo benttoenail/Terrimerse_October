@@ -45,7 +45,15 @@
 	-Figure out why the Measurement tool is not working!! -- CHECK
 -Make Objects scale when hovered- 
 	-Create script to attach to objects to scale when intersected -- CHECK
-	-Make a new Delete tool - Export as FBX -- 
-	-Scale back to oringal size when exit -- 
+	-Make a new Delete tool - Export as FBX -- CHECK
+	-Scale back to oringal size when exit -- --CHECK - sort of...
+		--at this moment it's not animating, only snapping 
+
+-Scale scene properly- 
+	-At this moment, the scene is not scaling as it should... 
+	-I can't scale the data set, because if I do all of the markers that have been applied will scale as well, thus ruining the measurements
+	-I need to scale the camera rig up and down - that's the best and easiest solution
+		-Except I'm getting awful errors -- For some reason the errors stopped happening??
+		-The belt is not scaling accordingly 
 	
 

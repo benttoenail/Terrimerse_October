@@ -48,15 +48,17 @@ public class ScaleDataAndObjects : MonoBehaviour {
             float scaleValue = delta.x + delta.z;
 
             dataSetScale = new Vector3(scaleValue, scaleValue, scaleValue);
-            pivotPoint.transform.localScale = startingScale + dataSetScale / 100.0f;
+            pivotPoint.transform.localScale = startingScale + dataSetScale / 500.0f;
 
         }
 
+        
         //Unparent the object from the pivot Gameobject
         if (device.GetTouchUp(SteamVR_Controller.ButtonMask.Trigger))
         {
             dataSet.transform.SetParent(null);
         }
+        
 
     }
 }

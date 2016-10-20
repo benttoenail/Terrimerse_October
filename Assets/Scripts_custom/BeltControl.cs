@@ -50,6 +50,8 @@ public class BeltControl : MonoBehaviour {
             rotAngle.transform.rotation = q;
             nodes[i] = rotAngle;
             nodeIcon[i] = nodes[i].transform.GetChild(0);
+
+            
            
         }
 
