@@ -36,3 +36,13 @@
 
 -Get this all set up in the Terrimerse Scene- - CHECK
 
+
+::161019::
+	-Scaling CameraRig - Does not work!
+	
+-Add Colliders to Measurement objects- -- CHECK 
+-Make sure the measurement tools are working -- 
+	-Figure out why the Measurement tool is not working!! -- 
+-Make Objects scale when hovered- 
+	-Create script to attach to objects to scale when intersected
+
