@@ -51,7 +51,8 @@ public class BeltControl : MonoBehaviour {
             nodes[i] = rotAngle;
             nodeIcon[i] = nodes[i].transform.GetChild(0);
 
-            
+            //Parent NodeObjects onto the belt
+            nodes[i].transform.SetParent(gameObject.transform);
            
         }
 
@@ -64,6 +65,7 @@ public class BeltControl : MonoBehaviour {
         beltButtonCollide = gameObject.GetComponent<HoverBelt>().controllerButtonCollide;
 
         //Attach to the HoverBelt_02 Object
+        
         for (int i = 0; i < nodes.Length; i++)
         {
             nodes[i].transform.position = gameObject.transform.position;
