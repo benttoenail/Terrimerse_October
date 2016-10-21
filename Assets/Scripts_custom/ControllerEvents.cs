@@ -150,9 +150,9 @@ public class ControllerEvents : MonoBehaviour {
 
         } else if(controllerIsIntersectingButton == false)
         {
-            ControllerEnteredButton();
+            //ControllerEnteredButton(); // PROBLEM // MAY ONLY WORK WITH OVERBELT
             controllerIsIntersectingButton = true;
-            device.TriggerHapticPulse(700); // Not Finding the Object
+            //device.TriggerHapticPulse(700); // Not Finding the Object
         }
 
     }
@@ -165,7 +165,7 @@ public class ControllerEvents : MonoBehaviour {
             controllerIsIntersectingBelt = false;
         }else if(controllerIsIntersectingButton == true)
         {
-            ControllerExitedButton();
+            //ControllerExitedButton(); // PROBLEM // MAY ONLY WORK WITH OVERBELT
             controllerIsIntersectingButton = false;
         }
     }

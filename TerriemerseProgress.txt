@@ -58,3 +58,17 @@
 -Parent objects to the belt -- CHECK 
 	
 
+::161020::
+-Paradox-
+	-Right now there are two very pressing matters- The issue with the scaling and the ability to turn off and on the point clouds
+		-To submit a more finished product, I should work on turnining off and on the point clouds - the issue with the scaling can wait 
+
+-Create CloudButton- --CHECK
+-Pass GameObject and Name info into the cloudBlock- -- CHECK
+-On controller click and interaction, turn off associated gameobject- --CHECK
+	-Seems like the script is looking for the hoverbelt
+-Scale button when entering- -- CHECK
+-Click while intersecting turns button on- 
+	
+
+
