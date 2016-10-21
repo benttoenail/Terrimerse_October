@@ -11,7 +11,7 @@ public class CloudBlock : MonoBehaviour {
     GameObject pointCloud;
 
     bool triggerIsPressed;
-    bool cloudIsActive;
+    bool cloudIsActive = true;
 
     Color activeColor = new Color(255, 0, 0);//red
     Color inactiveColor = new Color(100, 100, 100);//grey
@@ -81,7 +81,7 @@ public class CloudBlock : MonoBehaviour {
     public void ControllerTriggerPressed()
     {
         triggerIsPressed = true;
-        print("triggerPressed");
+        //print("triggerPressed");
     }
 
     public void ControllerTriggerUp()

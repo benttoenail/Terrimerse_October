@@ -68,7 +68,12 @@
 -On controller click and interaction, turn off associated gameobject- --CHECK
 	-Seems like the script is looking for the hoverbelt
 -Scale button when entering- -- CHECK
--Click while intersecting turns button on- 
+-Make sure this setup works with actual dataset- 
+	-Use a smaller dataset while testing -- CHECK
+
+-Translate CloudList- 
+	-Create another gameobject that'll house the PClist - parent list into that object -- CHECK
+	-Translate Cloudlist with the "arrow" objects -- 
 	
 
 
