@@ -136,12 +136,7 @@ MonoBehaviour:
   space: 0.5
   angularSpace: 150
   beltMat: {fileID: 0}
-  beltIcon:
-  - {fileID: 1000013946862560, guid: a2b10e8e5985b3341b99c3b1cde72cc1, type: 2}
-  - {fileID: 1000011885342900, guid: 131cb7bad5140d14a9db76a6d271d70e, type: 2}
-  - {fileID: 1000011096233614, guid: 7c67080183390824fb4c77f750a427d5, type: 2}
-  - {fileID: 1000013281597206, guid: 1c012bae21c555449bc84f9cbf5a80ac, type: 2}
-  - {fileID: 1000012236451236, guid: 899e7075ff427d440b1a712bf1e322d9, type: 2}
+  beltIcon: []
 --- !u!114 &114000012592659626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -154,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   headSet: {fileID: 0}
-  height: -0.7
+  height: -180
   moveSpeed: 4
   beltAngle: 120
   beltPoisitionFixed: 0

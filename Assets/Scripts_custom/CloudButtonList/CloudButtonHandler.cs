@@ -9,8 +9,6 @@ public class CloudButtonHandler : MonoBehaviour {
     [SerializeField]
     GameObject blockPrefab;
 
-    //string[] names;
-    List<string> names = new List<string>();
     GameObject[] objects;
 
     //Leave these for now - they may come in handy later...

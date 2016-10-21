@@ -41,11 +41,20 @@ public class MoveListUp : MonoBehaviour {
 
         if (triggerIsPressed && controllerIntersecting )
         {
-            transformDelta += 5.0f;
+            if (gameObject.name== "UpArrow")
+            {
+                transformDelta += 5.0f;
+            }
+            if (gameObject.name == "DownArrow")
+            {
+                transformDelta -= 5.0f;
+            }
+
             Vector3 temp = new Vector3(listOriginalPos.x, listOriginalPos.y + transformDelta, listOriginalPos.z);
             PCListTransform.transform.position = temp;
+
         } else if(!triggerIsPressed)
-        {
+        { 
             PCListTransform.transform.position = PCListTransform.transform.position;
         }
 
@@ -57,10 +66,9 @@ public class MoveListUp : MonoBehaviour {
         Vector3 targetScale = originalScale + new Vector3(10f, 10f, 10f);
         transform.localScale = targetScale;
 
-        if (col.gameObject.tag == "GameController")
-        {
-            controllerIntersecting = true;
-        }
+        controllerIntersecting = true;
+        listOriginalPos = PCListTransform.transform.position;
+
     }
 
     void OnTriggerExit()
@@ -68,6 +76,7 @@ public class MoveListUp : MonoBehaviour {
         transform.localScale = originalScale;
         listIsMoving = false;
         controllerIntersecting = false;
+        transformDelta = 0;
     }
 
 
@@ -75,11 +84,12 @@ public class MoveListUp : MonoBehaviour {
     public void ControllerTriggerPressed()
     {
         triggerIsPressed = true;
-        //print("triggerPressed");
+        print("triggerPressed from MoveScript");
     }
 
     public void ControllerTriggerUp()
     {
         triggerIsPressed = false;
+        print("Trigger is up from move script");
     }
 }

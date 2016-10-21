@@ -73,7 +73,17 @@
 
 -Translate CloudList- 
 	-Create another gameobject that'll house the PClist - parent list into that object -- CHECK
-	-Translate Cloudlist with the "arrow" objects -- 
+	-Translate Cloudlist with the "arrow" objects -- CHECK
+
+-Controller Trigger Events-
+	At this moment, the controller trigger events are a complete disastor.  The hoverbelt falls apart immediately, for some reason i cannot click while intersecting with
+another object (unless I press the trigger on the other controller?), and the PCList is bouncing around erradically while I translate it.  
+	Objects are not scaling along with the camera rig - for instance the PCList is not going to translate.  As this present moment, what I have is almost unworkable.
+
+	Tomorrow, try to implement Wiley's version of the hoverbelt.  If you can get that up and running, I'm sure it'll be more stable than what you currently
+have.  Make the PCList translatable, and open and closable.  Shoot for these items tomorrow night:
+	-Implement wiley's HoveBelt while using the tools you've created-
+	-Make PCList translatable, open and closable-
 	
 
 

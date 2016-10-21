@@ -59,7 +59,7 @@ public class ControllerEvents : MonoBehaviour {
                 {
                     ControllerCollideAndTrigger();
 
-                    //if intersecting with a BeltButton
+                //if intersecting with a BeltButton
                 } else if (controllerIsIntersectingButton)
                 {
                     ControllerButtonPressed();
@@ -68,15 +68,12 @@ public class ControllerEvents : MonoBehaviour {
                 {
                     ControllerTriggerPressed();
                 }
-            }else
-            {
-                ControllerTriggerUp();
             }
 
             //When Trigger is Released
             if (device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger)) //This is not finding the controller object??
             {
-                //ControllerTriggerUp();
+                ControllerTriggerUp();
             }
         }
     }
