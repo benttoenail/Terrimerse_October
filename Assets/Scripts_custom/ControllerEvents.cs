@@ -53,7 +53,7 @@ public class ControllerEvents : MonoBehaviour {
         if (device != null)
         {
             //Fire event when Trigger is Presssed - check if intersecting
-            if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
+            if (device.GetPress(SteamVR_Controller.ButtonMask.Trigger))
             {
                 if (controllerIsIntersectingBelt)
                 {
@@ -68,6 +68,9 @@ public class ControllerEvents : MonoBehaviour {
                 {
                     ControllerTriggerPressed();
                 }
+            }else
+            {
+                ControllerTriggerUp();
             }
 
             //When Trigger is Released

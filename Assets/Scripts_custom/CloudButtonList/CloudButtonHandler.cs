@@ -13,6 +13,7 @@ public class CloudButtonHandler : MonoBehaviour {
     List<string> names = new List<string>();
     GameObject[] objects;
 
+    //Leave these for now - they may come in handy later...
     public delegate void CloudListEventHandler(string s);
     public static event CloudListEventHandler BlockCreated;
 
@@ -25,20 +26,12 @@ public class CloudButtonHandler : MonoBehaviour {
         foreach(Transform c in DataSet.transform)
         {
             GameObject block = Instantiate(blockPrefab, new Vector3(handlerPos.x, handlerPos.y + y, handlerPos.z), Quaternion.identity) as GameObject;
-            BlockCreated(c.gameObject.name);
+            
             block.transform.SetParent(gameObject.transform);
-            Debug.Log(c.gameObject.name); // This is Correct!
-
-            names.Add(c.gameObject.name);
+            block.GetComponent<CloudBlock>().GetCloudData(c.gameObject.name, c.gameObject);
             y = y - 50;
         }
 
-        /*
-        for(int i = 0; i < names.Count; i++)
-        {
-            BlockCreated(names[i]);
-        }
-        */
 
 	}
 	

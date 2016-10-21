@@ -1,38 +1,50 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Valve.VR;
+
 
 public class CloudBlock : MonoBehaviour {
 
     TextMesh text;
-    //List<string> cloudName = new List<string>();
-    string cloudName;
+    public string cloudName;
+    GameObject pointCloud;
 
-    void OnEnable()
+    bool triggerIsPressed;
+
+    public void GetCloudData(string n, GameObject g)
     {
-        CloudButtonHandler.BlockCreated += InitBlock;
-    }
-
-
-    void InitBlock(string s)
-    {
-        cloudName = s;
-        Debug.Log("Object created");
-    }
-
-    void Awake()
-    {
-        
+        cloudName = n;
+        pointCloud = g;
     }
 
 	// Use this for initialization
 	void Start () {
+
+        ControllerEvents.ControllerTriggerPressed += ControllerTriggerPressed;
+        ControllerEvents.ControllerTriggerUp += ControllerTriggerUp;
+
         text = GetComponent<TextMesh>();
         text.text = cloudName;
+        print("This Button is for: " + pointCloud.name);
+
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+        //print(triggerIsPressed);
+    }
+
+
+
+    public void ControllerTriggerPressed()
+    {
+        triggerIsPressed = true;
+    }
+
+    public void ControllerTriggerUp()
+    {
+        triggerIsPressed = false;
+    }
 }
