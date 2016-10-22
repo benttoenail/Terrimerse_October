@@ -1,0 +1,85 @@
+// To compile, run "protoc -I=./ --csharp_out=./ ./LogEntryProto.proto" with bash
+
+
+syntax = "proto3";
+package ViveNetworkManagerProto;
+
+message LogEntryProto {
+	string game_object_name = 1;
+	string network_id = 2;
+	string class_name = 3;
+	CmdNameEnum cmd_name = 4;
+
+	// Generic parameter list
+	CmdGenericParams param_list = 5;
+
+  int64 datetime_bin = 6;
+  bool manual_parse = 7;
+
+	// Binary version of the customized proto class
+	bytes proto_param  = 8;
+
+	string method_name = 9;			// method name stored as string
+	int64 duration_tick = 10;
+
+	enum CmdNameEnum {
+    	CmdGeneric = 0;
+
+    	SetTransforms = 1;			// this has three string as argument
+
+    	CmdAddPointLeftProto = 2;		// this two have a string as argument, warpped by xxxParams
+    	CmdAddPointRightProto = 3;
+
+    	CmdNewStrokeLeft = 4;		// this two have no arguments
+    	CmdNewStrokeRight = 5;
+
+    	HEADER = 6;
+    }
+}
+
+
+message CmdGenericParams {
+	repeated GenericParam current_param = 1;
+}
+
+message GenericParam {
+	string type = 1;
+	bytes bin = 2; // Currently unused
+}
+
+message LogEntryProtoList {
+	repeated LogEntryProto log_entry = 1;
+}
+
+message SetTransformsParams{
+	string controller1 = 1;
+	string controller2 = 2;
+	string controller3 = 3;
+	string controller4 = 4;
+	string controller5 = 5;
+}
+
+message CmdAddPointLeftProtoParams{
+	string pointString = 1;
+}
+
+message CmdAddPointRightProtoParams{
+	string pointString = 1;
+}
+
+
+/*
+message Vec3 {
+	float x = 1;
+	float y = 2;
+	float z = 3;
+}
+
+message CmdDrawLineParams {
+
+}
+
+message CmdShapeExpanderParams{
+	repeated PBVec2 = 1;
+}
+*/

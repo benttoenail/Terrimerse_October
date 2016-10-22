@@ -86,4 +86,16 @@ have.  Make the PCList translatable, and open and closable.  Shoot for these ite
 	-Make PCList translatable, open and closable-
 	
 
+::161021::
+-Get Wiley's hoverbelt version up and running with your tools-
+	-Get wiley's hoverbelt up and running in terrimmerse- -- CHECK
+	-Getting the tools up and running-
+		-How do I attach scripts when certain items are clicked?
+		-Check out wiley's project, get some answers -- CHECK
+
+-Wiley gave me some sagelike advice, and I now know how to proceed. 
+	-I'll need to add a watcher gameobject to the controller which updates when a gameobject is instatiated and parented to the controller
+	
+
+
 

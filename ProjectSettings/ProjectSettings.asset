@@ -526,7 +526,7 @@ PlayerSettings:
   XboxOne::VR::enabledDevices: []
   iOS::VR::enabledDevices: []
   tvOS::VR::enabledDevices: []
-  cloudProjectId: 
-  projectName: 
-  organizationId: 
+  cloudProjectId: 7fb06562-78b5-40ad-ad87-4374f3130103
+  projectName: TerrImmerse_Max
+  organizationId: benttoenail
   cloudEnabled: 0

@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 41a567692c851474a84f4ee63f1a80c2
+timeCreated: 1463076951
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - ViveTrackingObject: {fileID: 170114, guid: 14ae13960cc704d428e871f2e09ab237, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

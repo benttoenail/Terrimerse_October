@@ -18,21 +18,26 @@ public class MoveDataSetControls : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		controller = gameObject.GetComponent<SteamVR_TrackedObject> ();
+        dataSet = GameObject.Find("TestMoveCube!");
+		//controller = gameObject.GetComponentInParent<SteamVR_TrackedObject> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		device = SteamVR_Controller.Input ((int)controller.index);
+        controller = gameObject.GetComponentInParent<SteamVR_TrackedObject>();
+        device = SteamVR_Controller.Input ((int)controller.index);
 
 		if(device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger)){
-			controllerOrigin = transform.position;
-			dataSetOrigin = dataSet.transform.position;
+           
+            //controllerOrigin = transform.position;
+            controllerOrigin = controller.transform.position;
+            dataSetOrigin = dataSet.transform.position;
 		}
 
 		if (device.GetPress (SteamVR_Controller.ButtonMask.Trigger)) {
-			Vector3 delta =   transform.position - controllerOrigin;
+            print("moving!!");
+            Vector3 delta =   controller.transform.position - controllerOrigin;
 			dataSet.transform.position = delta + dataSetOrigin;
 		}
 

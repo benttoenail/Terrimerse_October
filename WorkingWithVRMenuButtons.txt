@@ -1,0 +1,51 @@
+
+any tips off hand?
+Wiley Corning (wileycorning@gmail.com)
+mmm
+You could have a component (on the controller or on the player) that is responsible for setting and tracking the objects attached to each controller
+That's similar to what I'm doing in the painting program
+
+this would be a separate script component?
+
+Wiley Corning (wileycorning@gmail.com)
+Yes
+Or just part of your player script, I guess
+
+would I talk to it through the demobeltbuttonthing script?
+or perhaps I could give my tools a tag, and watch to see if any of child object's tag name == "ToolTag"
+
+Wiley Corning (wileycorning@gmail.com)
+I've not done any tag stuff
+it feels kind of clunky to me, idk
+
+a lot more clunky than this solution 
+
+Wiley Corning (wileycorning@gmail.com)
+What I would do is have some component on the controller or a child object of the controller;
+that component would either do the tracking itself, or have a reference to the player which would do the tracking
+And you could access that component through a call to GetComponent[ / InParent / InChild]
+from the  MoveDataSetControls script
+
+so the moveDataSetControls script would notify the Tracking script that it's attached to the controller? 
+
+Wiley Corning (wileycorning@gmail.com)
+Either that, or the button's DoStuff function would tell the Tracking script to change the controller's controls to MoveDataSetControls
+and also to delete the previous controls if they exists
+
+right, so I'd feed the instantiated gameobject info into the tracker script, and it's not == null when the button event is fire off, replace the gameobject
+
+Wiley Corning (wileycorning@gmail.com)
+Yep!
+
+Awesome, I'll work on that next
+I'm signing off for the night - thanks again wiley you have no idea how much you've helped me with this!
+
+Wiley Corning (wileycorning@gmail.com)
+My pleasure
+I know the whole VRMenu system is a little unintuitive
+but I think it really does simplify a lot of the design process.
+Good luck with your application!
+
+thanks man, enjoy your night ??
+
+You too ??
