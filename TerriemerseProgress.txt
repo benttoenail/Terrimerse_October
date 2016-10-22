@@ -120,11 +120,15 @@ have.  Make the PCList translatable, and open and closable.  Shoot for these ite
 
 -Creating a scroll list-
 	-Check out wiley's project and see if you can find out how to set that up-
+	-Change Text Component-
+	-Get buttons working with VRMenu-
+	-Replace all prefabs with buttons-
 
 -Current issues-
 	-Set "DrawTool()" to off when controller is deleting- --The Bool is currently not updating in the script!!!
 	-Turn off Measurement tool when Intersecting another object-
-	-Belt needs to scale along with the scale of the player- 	
+	-Belt needs to scale along with the scale of the player- 
+		--I'd need to modify the belt items script	
 
 
 
