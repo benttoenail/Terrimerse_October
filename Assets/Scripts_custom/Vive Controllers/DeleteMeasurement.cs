@@ -14,13 +14,14 @@ public class DeleteMeasurement : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        controller = gameObject.GetComponent<SteamVR_TrackedObject>();
+        //controller = gameObject.GetComponent<SteamVR_TrackedObject>();
 
     }
 	
 	// Update is called once per frame
 	void Update () {
 
+        controller = gameObject.GetComponentInParent<SteamVR_TrackedObject>();
         device = SteamVR_Controller.Input((int)controller.index);
 
         if (device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger) && collideMeasure)

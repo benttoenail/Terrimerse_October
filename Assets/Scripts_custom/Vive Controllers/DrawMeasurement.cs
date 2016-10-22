@@ -16,26 +16,54 @@ public class DrawMeasurement : MonoBehaviour {
     GameObject toolPrefab;
     Transform sphere02;
 
-    bool isIntersecting;
+    bool isIntersecting = false;
 
     // Use this for initialization
     void Start () {
 
-        controller = gameObject.GetComponent<SteamVR_TrackedObject>();
+        //controller = gameObject.GetComponent<SteamVR_TrackedObject>();
 
     }
 	
 	// Update is called once per frame
 	void Update () {
 
+        controller = gameObject.GetComponentInParent<SteamVR_TrackedObject>();
         device = SteamVR_Controller.Input((int)controller.index);
 
         triggerHoldDown = device.GetPress(SteamVR_Controller.ButtonMask.Trigger);
         triggerDown = device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger);
         triggerUp = device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger);
 
-        DrawTool();
+       print("Intersecting is equal to: " + isIntersecting);
 
+       DrawTool();
+
+    }
+
+    //Don't draw if interacting with another Measurement tool
+    public void IsInSphere()
+    {
+        print("Controller has Entered");
+        SetIntersectingOn();
+       // SetIntersectingOn();
+    }
+
+    private void SetIntersectingOn()
+    {
+        isIntersecting = true;
+    }
+
+    public void IsOutSphere()
+    {
+        print("Controller has Exited");
+        SetIntersectingOff();
+        //isIntersecting = false;
+    }
+
+    private void SetIntersectingOff()
+    {
+        isIntersecting = false;
     }
 
 
@@ -46,7 +74,7 @@ public class DrawMeasurement : MonoBehaviour {
             toolPrefab = Instantiate(measureTool, controller.transform.position, Quaternion.identity) as GameObject;
 
             //int childCount = DataSet.transform.childCount;
-            toolPrefab.transform.parent = GameObject.FindGameObjectWithTag("DataSet").transform;
+            //toolPrefab.transform.parent = GameObject.FindGameObjectWithTag("DataSet").transform; //Will have to find the Dataset again!  
 
             sphere02 = toolPrefab.transform.FindChild("Sphere_02");
             sphere02.transform.parent = controller.transform;
@@ -57,15 +85,9 @@ public class DrawMeasurement : MonoBehaviour {
             sphere02.transform.parent = toolPrefab.transform;
         }
 
+        
     }
 
-    void OnTriggerEnter()
-    {
-        isIntersecting = true;
-    }
 
-    void OnTriggerExit()
-    {
-        isIntersecting = false;
-    }
+
 }
