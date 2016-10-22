@@ -45,6 +45,8 @@ public class CloudButtonHandler : MonoBehaviour {
             spacing = spacing - 2;
         }
 
+        //Set Inactive
+       // gameObject.SetActive(false);
 	}
 	
 }

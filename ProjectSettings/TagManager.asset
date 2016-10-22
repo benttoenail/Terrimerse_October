@@ -16,6 +16,7 @@ TagManager:
   - ScaleTool
   - MeasurementTool
   - DeleteTool
+  - PCList
   layers:
   - Default
   - TransparentFX

@@ -3,15 +3,16 @@ using System.Collections;
 
 public class OpenPCList : MonoBehaviour {
     VRMenuButton myButton;
-    public GameObject PCListHandler;
+    GameObject PCListHandler;
 
 	// Use this for initialization
 	void Start () {
         myButton = GetComponent<VRMenuButton>();
         myButton.OnClick += OpenList;
+        PCListHandler = GameObject.FindGameObjectWithTag("PCList");
 
         PCListHandler.SetActive(false);
-	}
+    }
 
     void OpenList(VRMenuEventData e)
     {
