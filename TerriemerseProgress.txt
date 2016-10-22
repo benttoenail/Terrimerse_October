@@ -103,9 +103,21 @@ have.  Make the PCList translatable, and open and closable.  Shoot for these ite
 	-Modify code to work with this specific setup-
 		-Rotate- -- CHECK
 		-Scale- -- CHECK
+
 -Attach a watcher script to the playerObject that keeps track of attached tools- 
-		-Measure-
-		-Delete-
+	-I need the tracker script to delete the current tool, and update it with the incoming tool
+	-Attach Gameobject via the tracker script- --CHECK
+	-Replace the Tool with incoming tool- -- CHECK
+		-Measure- -- CHECK
+		-Delete- -- Delete tool not finding the measurement object
+	-Make measurement object a VRMenu Button -- CHECK
+-Add all current buttons to hoverbelt- --CHECK
+
+-Get belt working with the DataSet-
+
+
+-Current issues-
+	-Set "DrawTool()" to off when controller is deleting- --The Bool is currently not updating in the script!!!
 	
 
 

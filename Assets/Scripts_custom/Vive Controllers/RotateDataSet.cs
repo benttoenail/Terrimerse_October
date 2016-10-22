@@ -16,7 +16,8 @@ public class RotateDataSet : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        dataSet = GameObject.Find("TestMoveCube!"); // Had to do this to find object...
+       // dataSet = GameObject.Find("TestMoveCube!"); // Had to do this to find object...
+        dataSet = GameObject.FindGameObjectWithTag("DataSet");
         //controller = gameObject.GetComponent<SteamVR_TrackedObject>();
     }
 	

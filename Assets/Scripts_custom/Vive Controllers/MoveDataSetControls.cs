@@ -18,9 +18,10 @@ public class MoveDataSetControls : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        dataSet = GameObject.Find("TestMoveCube!"); // Had to do this to find object...
-		//controller = gameObject.GetComponentInParent<SteamVR_TrackedObject> ();
-	}
+        //dataSet = GameObject.Find("TestMoveCube!"); // Had to do this to find object...
+        dataSet = GameObject.FindGameObjectWithTag("DataSet");
+        //controller = gameObject.GetComponentInParent<SteamVR_TrackedObject> ();
+    }
 	
 	// Update is called once per frame
 	void Update () {

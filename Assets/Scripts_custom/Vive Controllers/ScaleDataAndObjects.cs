@@ -17,7 +17,8 @@ public class ScaleDataAndObjects : MonoBehaviour {
     
     // Use this for initialization
     void Start () {
-        dataSet = GameObject.Find("TestMoveCube!"); // Had to do this to find object...
+        //dataSet = GameObject.Find("TestMoveCube!"); // Had to do this to find object...
+        dataSet = GameObject.FindGameObjectWithTag("DataSet");
         pivotPoint = new GameObject();
         pivotPoint.transform.localScale = new Vector3(1, 1, 1);
 
