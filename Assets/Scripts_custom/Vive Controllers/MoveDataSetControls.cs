@@ -18,7 +18,7 @@ public class MoveDataSetControls : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        dataSet = GameObject.Find("TestMoveCube!");
+        dataSet = GameObject.Find("TestMoveCube!"); // Had to do this to find object...
 		//controller = gameObject.GetComponentInParent<SteamVR_TrackedObject> ();
 	}
 	
@@ -43,27 +43,4 @@ public class MoveDataSetControls : MonoBehaviour {
 
 	}
 
-
-	//First Implementation of moving the DataSet
-	void GlideDataSet(){
-
-		device = SteamVR_Controller.Input ((int)controller.index);
-
-		if(device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger)){
-
-			y = transform.position.y;
-
-		}
-
-		if (device.GetPress (SteamVR_Controller.ButtonMask.Trigger)) {
-
-			float currentY = transform.position.y;
-			float deltaY = y - currentY;
-
-			Vector3 dataNewPos = new Vector3 (dataSet.transform.position.x, dataSet.transform.position.y + deltaY * 0.1f, dataSet.transform.position.z);
-			dataSet.transform.position = dataNewPos;
-
-		}
-
-	}
 }

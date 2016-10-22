@@ -18,9 +18,16 @@ public class DemoBeltButtonThing : MonoBehaviour {
 		// Example of getting the actual component that created this event
 		ControllerMenuInteractor actualController = controllerObj.GetComponentInChildren<ControllerMenuInteractor> ();
 
+        /*
 		// Attach something to the controller
 		GameObject anInstance = (GameObject) Instantiate (myPrefab);
 
 		anInstance.transform.SetParent (controllerObj.transform, false);
+        */
+
+        //Update ToolTracker
+        ToolTracker toolTracker = controllerObj.GetComponentInChildren<ToolTracker>();
+        toolTracker.UpdateCurrentTool(myPrefab);
 	}
+
 }

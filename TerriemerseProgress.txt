@@ -97,5 +97,16 @@ have.  Make the PCList translatable, and open and closable.  Shoot for these ite
 	-I'll need to add a watcher gameobject to the controller which updates when a gameobject is instatiated and parented to the controller
 	
 
+::161022::
+-Recreating more stable tools-
+	-Create prefabs with tools attached- -- CHECK -- Still need measure tools - Make sure setup works first
+	-Modify code to work with this specific setup-
+		-Rotate- -- CHECK
+		-Scale- -- CHECK
+-Attach a watcher script to the playerObject that keeps track of attached tools- 
+		-Measure-
+		-Delete-
+	
+
 
 

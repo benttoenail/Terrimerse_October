@@ -16,25 +16,26 @@ public class RotateDataSet : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
-        controller = gameObject.GetComponent<SteamVR_TrackedObject>();
-
+        dataSet = GameObject.Find("TestMoveCube!"); // Had to do this to find object...
+        //controller = gameObject.GetComponent<SteamVR_TrackedObject>();
     }
 	
 	// Update is called once per frame
 	void Update () {
 
+        controller = gameObject.GetComponentInParent<SteamVR_TrackedObject>();
         device = SteamVR_Controller.Input((int)controller.index);
-        dataSetRotation.x = transform.position.x;
+
+        dataSetRotation.x = controller.transform.position.x;
 
         if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
         {
             originalRotation = dataSet.transform.eulerAngles;
-            controllerOrigin = transform.position;
+            controllerOrigin = controller.transform.position;
         }
         if (device.GetPress(SteamVR_Controller.ButtonMask.Trigger))
         {
-            Vector3 delta = transform.position - controllerOrigin;
+            Vector3 delta = controller.transform.position - controllerOrigin;
             dataSetRotation = new Vector3(0, delta.x + delta.z, 0);
             dataSet.transform.eulerAngles = originalRotation + dataSetRotation * rotationSpeed;
         }

@@ -17,8 +17,7 @@ public class ScaleDataAndObjects : MonoBehaviour {
     
     // Use this for initialization
     void Start () {
-
-        controller = gameObject.GetComponent<SteamVR_TrackedObject>();
+        dataSet = GameObject.Find("TestMoveCube!"); // Had to do this to find object...
         pivotPoint = new GameObject();
         pivotPoint.transform.localScale = new Vector3(1, 1, 1);
 
@@ -27,6 +26,7 @@ public class ScaleDataAndObjects : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        controller = gameObject.GetComponentInParent<SteamVR_TrackedObject>();
         device = SteamVR_Controller.Input((int)controller.index);
 
         //get Starting scale
@@ -35,8 +35,8 @@ public class ScaleDataAndObjects : MonoBehaviour {
         if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
         {
             startingScale = pivotPoint.transform.localScale;
-            pivotPoint.transform.position = transform.position;
-            controllerOrigin = transform.position;
+            pivotPoint.transform.position = controller.transform.position;
+            controllerOrigin = controller.transform.position;
             dataSet.transform.SetParent(pivotPoint.transform);
 
         }
@@ -44,7 +44,7 @@ public class ScaleDataAndObjects : MonoBehaviour {
         //Scale object to controller position
         if (device.GetPress(SteamVR_Controller.ButtonMask.Trigger))
         {
-            Vector3 delta = transform.position - controllerOrigin;
+            Vector3 delta = controller.transform.position - controllerOrigin;
             float scaleValue = delta.x + delta.z;
 
             dataSetScale = new Vector3(scaleValue, scaleValue, scaleValue);
