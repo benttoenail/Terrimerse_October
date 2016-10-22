@@ -113,12 +113,18 @@ have.  Make the PCList translatable, and open and closable.  Shoot for these ite
 	-Make measurement object a VRMenu Button -- CHECK
 -Add all current buttons to hoverbelt- --CHECK
 
--Get belt working with the DataSet-
+-Get belt working with the DataSet- --CHECK
+-Parent measurements to DataSet- -- CHECK
+-Set up scale to scale player rig- -- CHECK
+-Slow Down rotation- CHECK
 
+-Creating a scroll list-
+	-Check out wiley's project and see if you can find out how to set that up-
 
 -Current issues-
 	-Set "DrawTool()" to off when controller is deleting- --The Bool is currently not updating in the script!!!
-	
+	-Turn off Measurement tool when Intersecting another object-
+	-Belt needs to scale along with the scale of the player- 	
 
 
 

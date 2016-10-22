@@ -52,4 +52,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataSet: {fileID: 0}
-  rotationSpeed: 100
+  rotationSpeed: 10

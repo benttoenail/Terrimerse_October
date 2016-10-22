@@ -41,7 +41,32 @@ public class DrawMeasurement : MonoBehaviour {
 
     }
 
+    //Drawing measurements
+    void DrawTool()
+    {
+        if (triggerDown && !isIntersecting)
+        {
+            toolPrefab = Instantiate(measureTool, controller.transform.position, Quaternion.identity) as GameObject;
+
+            //int childCount = DataSet.transform.childCount;
+            toolPrefab.transform.parent = GameObject.FindGameObjectWithTag("DataSet").transform; //Will have to find the Dataset again!  
+
+            sphere02 = toolPrefab.transform.FindChild("Sphere_02");
+            sphere02.transform.parent = controller.transform;
+        }
+
+        if (triggerUp)
+        {
+            sphere02.transform.parent = toolPrefab.transform;
+        }
+
+
+    }
+
+
+    //Set intersecting bool to "true" when interactor is intersecting
     //Don't draw if interacting with another Measurement tool
+    //NOT WORKING!!!
     public void IsInSphere()
     {
         print("Controller has Entered");
@@ -65,28 +90,9 @@ public class DrawMeasurement : MonoBehaviour {
     {
         isIntersecting = false;
     }
+ 
 
 
-    void DrawTool()
-    {
-        if (triggerDown && !isIntersecting)
-        {
-            toolPrefab = Instantiate(measureTool, controller.transform.position, Quaternion.identity) as GameObject;
-
-            //int childCount = DataSet.transform.childCount;
-            //toolPrefab.transform.parent = GameObject.FindGameObjectWithTag("DataSet").transform; //Will have to find the Dataset again!  
-
-            sphere02 = toolPrefab.transform.FindChild("Sphere_02");
-            sphere02.transform.parent = controller.transform;
-        }
-
-        if (triggerUp)
-        {
-            sphere02.transform.parent = toolPrefab.transform;
-        }
-
-        
-    }
 
 
 
