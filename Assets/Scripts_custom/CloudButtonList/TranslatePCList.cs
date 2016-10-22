@@ -8,11 +8,13 @@ public class TranslatePCList : MonoBehaviour {
     GameObject PCList;
 
     bool listIsMoving;
+    public float speed;
 
 	// Use this for initialization
 	void Start () {
         myButton = GetComponent<VRMenuButton>();
 
+        myButton.OnClick += IncreaseSpeed;
         myButton.OnIn += TranslateList;
         myButton.OnOut += StopList;
 
@@ -24,23 +26,25 @@ public class TranslatePCList : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        Vector3 tempMove = new Vector3(0, 1, 0);
-
-        print(listIsMoving);
-
+        Vector3 tempMove = new Vector3(0, 2.5f, 0);
         if (listIsMoving)
         {
             if(this.gameObject.name == "Button_up")
             {
-                PCList.transform.position += tempMove;
+                PCList.transform.position += tempMove;// * speed
             }else
             {
-                PCList.transform.position -= tempMove;
+                PCList.transform.position -= tempMove;// * speed
             }
             
         }
        
 	}
+
+    void IncreaseSpeed(VRMenuEventData e)
+    {
+        speed = 5;
+    }
 
     void TranslateList(VRMenuEventData e)
     {
