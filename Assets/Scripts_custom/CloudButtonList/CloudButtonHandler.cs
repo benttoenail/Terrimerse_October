@@ -5,17 +5,22 @@ using System.Collections.Generic;
 
 public class CloudButtonHandler : MonoBehaviour {
 
-    [SerializeField] GameObject DataSet;
+   // [SerializeField] GameObject DataSet;
+    [SerializeField]
+    GameObject DataSetMeshes;
+
+    [SerializeField]
+    GameObject DataSetPointClouds;
+
     [SerializeField]
     GameObject blockPrefab;
-
-    GameObject[] objects;
 
     //Leave these for now - they may come in handy later...
     public delegate void CloudListEventHandler(string s);
     public static event CloudListEventHandler BlockCreated;
 
     GameObject PCListTransform;
+    int count;
 
     void Awake()
     {
@@ -28,25 +33,27 @@ public class CloudButtonHandler : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        float y = 0;
+        float y = 50;
         float spacing = 0;
+        count = DataSetPointClouds.transform.childCount;
         Vector3 handlerPos = transform.position;
 
+        GameObject[] pointClouds = new GameObject[count];
+        GameObject[] meshClouds = new GameObject[count];
 
-        foreach(Transform c in DataSet.transform)
+        for(int i = 0; i < count; i++)
         {
-            GameObject block = Instantiate(blockPrefab, new Vector3(handlerPos.x, handlerPos.y + y + spacing, handlerPos.z), Quaternion.identity) as GameObject;
-            
-            block.transform.SetParent(PCListTransform.gameObject.transform);
+            pointClouds[i] = DataSetPointClouds.transform.GetChild(i).gameObject;
+            meshClouds[i] = DataSetMeshes.transform.GetChild(i).gameObject;
 
-            block.GetComponent<CloudBlock>().GetCloudData(c.gameObject.name, c.gameObject);
+            GameObject block = Instantiate(blockPrefab, new Vector3(handlerPos.x, handlerPos.y + y + spacing, handlerPos.z), Quaternion.identity) as GameObject;
+            block.transform.SetParent(PCListTransform.gameObject.transform);
+            block.GetComponent<CloudBlock>().GetCloudData(pointClouds[i].gameObject.name, pointClouds[i].gameObject, meshClouds[i].gameObject);
 
             y = y - 50;
             spacing = spacing - 2;
         }
 
-        //Set Inactive
-       // gameObject.SetActive(false);
-	}
+    }
 	
 }

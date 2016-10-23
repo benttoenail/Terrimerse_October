@@ -50,7 +50,8 @@ public class ScaleDataAndObjects : MonoBehaviour {
             float scaleValue = delta.x + delta.z;
 
             dataSetScale = new Vector3(scaleValue, scaleValue, scaleValue);
-            pivotPoint.transform.localScale = startingScale + dataSetScale / 400.0f;
+            pivotPoint.transform.localScale = startingScale * dataSetScale / 400.0f;
+            //pivotPoint.transform.localScale = Vector3.Scale(startingScale, dataSetScale)/400;
 
         }
 

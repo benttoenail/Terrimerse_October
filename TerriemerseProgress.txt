@@ -137,11 +137,6 @@ have.  Make the PCList translatable, and open and closable.  Shoot for these ite
 		--I'd need to modify the belt items script	
 
 
--if interacting with a button, don't do anything-
--Close button on PCList closes the list-
--Scaling issues with belt and menus-
-	-Scaling with multiplication 
--List needs to deactivate on opening- 
 
 
 ::161013::
@@ -150,6 +145,18 @@ have.  Make the PCList translatable, and open and closable.  Shoot for these ite
 	-Create a single gameObject for both dataSets- -- CHECK
 	-Put the right numbered sets into each group- -- CHECK
 	-Connect the meshes to the on/off switches in the PCList-
+		-I have to pull in both Mesh and cloud lists into the CloudButtonHandler -- CHECK
+		-Pull in both Mesh and Point cloud object into each button instance- -- CHECK
+		-Turn both on/off with button clicks- -- CHECK
+		-Toggle Points and mesh viz- --CHECK
 
 -PCList opening and Closing-
-	-When opening PCList, have it open next to player-
+	-When opening PCList, have it open next to player- --CHECK (a poor man's solution for now...)
+
+>>Ongoing Issues<<
+-if interacting with a button, don't do anything-
+-Right controller, once given a tool, doesn't close hoverBelt
+-Close button on PCList closes the list-
+-Scaling issues with belt and menus-
+	-Scaling with multiplication 
+-List needs to deactivate on opening- 

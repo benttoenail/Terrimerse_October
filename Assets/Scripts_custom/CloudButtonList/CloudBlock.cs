@@ -13,16 +13,13 @@ public class CloudBlock : MonoBehaviour {
     public GameObject vizSphere;
     public string cloudName;
     GameObject pointCloud;
+    GameObject meshCloud;
 
-    /* // For changing color of text -- May be uneccessary...  
-    Color activeColor = new Color(50, 50, 200);//lightBlue
-    Color inactiveColor = new Color(100, 100, 100);//grey
-    */
-
-    public void GetCloudData(string n, GameObject pc)
+    public void GetCloudData(string n, GameObject pc, GameObject mc)
     {
         cloudName = n;
         pointCloud = pc;
+        meshCloud = mc;
     }
 
 	// Use this for initialization
@@ -41,12 +38,16 @@ public class CloudBlock : MonoBehaviour {
         if (pointCloud.activeSelf)
         {
             pointCloud.SetActive(false);
+            meshCloud.SetActive(false);
+
             print("Turning off PC");
             print(pointCloud.activeSelf);
             vizSphere.SetActive(false);
-        }else
+        } else
         {
             pointCloud.SetActive(true);
+            meshCloud.SetActive(true);
+
             print("Turning On PC");
             print(pointCloud.activeSelf);
             vizSphere.SetActive(true);
