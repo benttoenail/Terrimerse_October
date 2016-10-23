@@ -144,3 +144,12 @@ have.  Make the PCList translatable, and open and closable.  Shoot for these ite
 -List needs to deactivate on opening- 
 
 
+::161013::
+-Mesh Conversion-
+	-Bring the converted Meshes into the main project- CHECK
+	-Create a single gameObject for both dataSets- -- CHECK
+	-Put the right numbered sets into each group- -- CHECK
+	-Connect the meshes to the on/off switches in the PCList-
+
+-PCList opening and Closing-
+	-When opening PCList, have it open next to player-

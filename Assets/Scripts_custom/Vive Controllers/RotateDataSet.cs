@@ -8,7 +8,7 @@ public class RotateDataSet : MonoBehaviour {
     SteamVR_TrackedObject controller;
 
     public GameObject dataSet;
-    public float rotationSpeed = 100;
+    public float rotationSpeed = 50;
 
     Vector3 originalRotation;
     Vector3 dataSetRotation;
