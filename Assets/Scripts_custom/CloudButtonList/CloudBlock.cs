@@ -32,6 +32,7 @@ public class CloudBlock : MonoBehaviour {
         myButton.OnClick += ToggleViz;
 
         text.GetComponent<Text>().text = cloudName;
+        
     }
 
     void ToggleViz(VRMenuEventData e)

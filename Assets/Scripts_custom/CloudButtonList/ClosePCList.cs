@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class ClosePCList : MonoBehaviour {
-    VRMenuButton myButton;
+    public VRMenuButton myButton;
     [SerializeField] GameObject PCListHandler;
 
     // Use this for initialization
@@ -11,12 +11,12 @@ public class ClosePCList : MonoBehaviour {
         myButton = GetComponent<VRMenuButton>();
         myButton.OnClick += CloseList;
 
-        //PCListHandler.SetActive(false);
+       // PCListHandler.SetActive(false);
     }
 
     void CloseList(VRMenuEventData e)
     {
-        //PCListHandler.SetActive(false);
+        PCListHandler.SetActive(false);
     }
 
 }

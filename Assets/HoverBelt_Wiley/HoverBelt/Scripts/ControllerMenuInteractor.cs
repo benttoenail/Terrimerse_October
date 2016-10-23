@@ -25,7 +25,6 @@ public class ControllerMenuInteractor : MonoBehaviour {
 
 
 	void OnTriggerEnter(Collider other) {
-		Debug.Log ("A");
 		VRMenuItem item = other.GetComponentInParent<VRMenuItem> ();
 		if (item != null) {
 			intersectedItems.Add (item);
@@ -114,7 +113,7 @@ public class ControllerMenuInteractor : MonoBehaviour {
 
 	protected void CleanList() {
 		for (int i = intersectedItems.Count - 1; i >= 0; i--) {
-			if (intersectedItems [i] == null) {
+			if (intersectedItems [i] == null || !intersectedItems[i].gameObject.activeSelf) {
 				intersectedItems.RemoveAt (i);
 			}
 		}
