@@ -15,18 +15,20 @@ public class CloudBlock : MonoBehaviour {
     GameObject pointCloud;
     GameObject meshCloud;
 
-    public void GetCloudData(string n, GameObject pc, GameObject mc)
+    public void GetCloudData(string n, GameObject pc, GameObject mc, bool isCloudActive)
     {
         cloudName = n;
         pointCloud = pc;
         meshCloud = mc;
+        vizSphere.SetActive(isCloudActive);
+        print(isCloudActive);
     }
 
 	// Use this for initialization
 	void Start () {
 
         myButton = GetComponent<VRMenuButton>();
-        myButton.OnClick += ToggleViz;
+        myButton.OnPointerDown += ToggleViz;
 
         text.GetComponent<Text>().text = cloudName;
         

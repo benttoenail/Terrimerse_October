@@ -33,8 +33,9 @@ public class HoverBeltMotion : MonoBehaviour {
 		
 		if (control.state == HoverBeltItems.BeltState.Closed) {
 			float increment = Time.deltaTime * control.moveSpeed;
-			transform.position = Vector3.Lerp (transform.position, headSet.transform.position + control.baseHeight * Vector3.up, increment);
-			transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.AngleAxis (headSet.transform.eulerAngles.y, Vector3.up), increment);
+			//transform.position = Vector3.Lerp (transform.position, headSet.transform.position + control.baseHeight * Vector3.up, increment);
+            transform.position = Vector3.Lerp(transform.position, headSet.transform.position, increment);
+            transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.AngleAxis (headSet.transform.eulerAngles.y, Vector3.up), increment);
 		}
 	}
 
@@ -44,4 +45,4 @@ public class HoverBeltMotion : MonoBehaviour {
         gameObject.transform.localScale = new Vector3(1, 1, 1);
         parented = true;
     }
-    }
+}

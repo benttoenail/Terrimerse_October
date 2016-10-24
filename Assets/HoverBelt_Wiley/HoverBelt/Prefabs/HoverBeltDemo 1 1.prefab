@@ -941,7 +941,7 @@ MonoBehaviour:
   openTime: 1.5
   closeTime: 0.5
   moveSpeed: 4
-  baseHeight: -180
+  baseHeight: -0.7
   raiseHeight: 0.4
   beltMat: {fileID: 2100000, guid: e4ec9f37332c9d34bb67d743bb25a042, type: 2}
   state: 1
@@ -1175,6 +1175,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 088d297ec3103294189b63a7796bd1b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PCListHandlerPrefab: {fileID: 1000010934300982, guid: 24b9023a4cc63fc43910691e0791b0d4,
+    type: 2}
+  optimalPos: {x: 0, y: 0, z: 0}
 --- !u!114 &114000012863309330
 MonoBehaviour:
   m_ObjectHideFlags: 1

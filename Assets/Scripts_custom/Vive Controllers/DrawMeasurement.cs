@@ -27,7 +27,10 @@ public class DrawMeasurement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        if (transform.parent.GetComponentInChildren<ControllerMenuInteractor>().isIntersecting)
+        {
+            return;
+        }
         controller = gameObject.GetComponentInParent<SteamVR_TrackedObject>();
         device = SteamVR_Controller.Input((int)controller.index);
 
@@ -46,7 +49,9 @@ public class DrawMeasurement : MonoBehaviour {
     {
         if (triggerDown && !isIntersecting)
         {
-            toolPrefab = Instantiate(measureTool, controller.transform.position, Quaternion.identity) as GameObject;
+            GameObject interactor = controller.transform.FindChild("Interactor").gameObject;
+            //toolPrefab = Instantiate(measureTool, controller.transform.position, Quaternion.identity) as GameObject;
+            toolPrefab = Instantiate(measureTool, interactor.transform.position, Quaternion.identity) as GameObject;
 
             //int childCount = DataSet.transform.childCount;
             toolPrefab.transform.parent = GameObject.FindGameObjectWithTag("DataSet").transform; //Will have to find the Dataset again!  
@@ -59,7 +64,6 @@ public class DrawMeasurement : MonoBehaviour {
         {
             sphere02.transform.parent = toolPrefab.transform;
         }
-
 
     }
 

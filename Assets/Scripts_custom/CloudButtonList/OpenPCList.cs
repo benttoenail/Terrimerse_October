@@ -4,8 +4,11 @@ using System.Collections;
 public class OpenPCList : MonoBehaviour {
     VRMenuButton myButton;
     GameObject PCListHandler;
+    public GameObject PCListHandlerPrefab;
 
     GameObject player;
+    GameObject playerRig;
+
     public Vector3 optimalPos;
     Vector3 playerPos;
 
@@ -14,10 +17,11 @@ public class OpenPCList : MonoBehaviour {
         myButton = GetComponent<VRMenuButton>();
         myButton.OnClick += OpenList;
 
-        PCListHandler = GameObject.FindGameObjectWithTag("PCList");
+        //PCListHandler = GameObject.FindGameObjectWithTag("PCList");
         player = GameObject.FindGameObjectWithTag("MainCamera");//Get player's headPosition
+        playerRig = GameObject.FindGameObjectWithTag("Player");
 
-        PCListHandler.SetActive(false);
+        //PCListHandler.SetActive(false);
     }
 
     void OpenList(VRMenuEventData e)
@@ -25,15 +29,17 @@ public class OpenPCList : MonoBehaviour {
         //Get player position and move PCList to that position when opened
         //THIS IS A POOR MAN'S SOLUTION - DOES NOT TAKE ROTATION INTO ACCOUNT
         playerPos = player.transform.position;
-        optimalPos = new Vector3(0, 0, 170);
-        PCListHandler.transform.position = playerPos + optimalPos;
+        optimalPos = playerPos / playerRig.transform.localScale.x + new Vector3(0, 0, 1.7f);
 
-        if (!PCListHandler.activeSelf)
+
+        if (PCListHandler == null)
         {
-            PCListHandler.SetActive(true);
+            PCListHandler = Instantiate(PCListHandlerPrefab, optimalPos, Quaternion.identity) as GameObject;
+           // PCListHandler.GetComponent<CloudButtonHandler>().InitCLoudList();
+            PCListHandler.transform.SetParent(playerRig.transform, false);
         }else
         {
-            PCListHandler.SetActive(false);
+            Destroy(PCListHandler);
         }
         
     }

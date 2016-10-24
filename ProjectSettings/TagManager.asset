@@ -17,6 +17,9 @@ TagManager:
   - MeasurementTool
   - DeleteTool
   - PCList
+  - Interactor
+  - MeshClouds
+  - PointClouds
   layers:
   - Default
   - TransparentFX

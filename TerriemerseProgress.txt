@@ -154,9 +154,15 @@ have.  Make the PCList translatable, and open and closable.  Shoot for these ite
 	-When opening PCList, have it open next to player- --CHECK (a poor man's solution for now...)
 
 >>Ongoing Issues<<
--if interacting with a button, don't do anything-
--Right controller, once given a tool, doesn't close hoverBelt
+-Draw tool needs to draw at interactor point -- CHECK
+-Top mesh is being drawn twice- -- CHECK
+-if interacting with a button, don't do anything- -- CHECK
+	-Create a base class and inherit throughout all tools??-
+-Right controller, once given a tool, doesn't close hoverBelt (sometimes??)-
 -Close button on PCList closes the list-
--Scaling issues with belt and menus-
-	-Scaling with multiplication 
+	-Works, but cause problems after using it
+-Scaling issues with belt and menus- -- CHECK
+	-Scaling with multiplication (A math problem)- CHECK
+	-Scaling the PClist needs to stop- 
 -List needs to deactivate on opening- 
+-Need to convert the rest of the point clouds (That I can)-

@@ -28,10 +28,14 @@ public class CloudButtonHandler : MonoBehaviour {
         PCListTransform.transform.position = transform.position;
         PCListTransform.name = "PCListTransform";
         PCListTransform.transform.SetParent(gameObject.transform);
+        
     }
 
 	// Use this for initialization
 	void Start () {
+
+        DataSetMeshes = GameObject.FindGameObjectWithTag("MeshClouds");
+        DataSetPointClouds = GameObject.FindGameObjectWithTag("PointClouds");
 
         float y = 50;
         float spacing = 0;
@@ -48,11 +52,13 @@ public class CloudButtonHandler : MonoBehaviour {
 
             GameObject block = Instantiate(blockPrefab, new Vector3(handlerPos.x, handlerPos.y + y + spacing, handlerPos.z), Quaternion.identity) as GameObject;
             block.transform.SetParent(PCListTransform.gameObject.transform);
-            block.GetComponent<CloudBlock>().GetCloudData(pointClouds[i].gameObject.name, pointClouds[i].gameObject, meshClouds[i].gameObject);
+            block.GetComponent<CloudBlock>().GetCloudData(pointClouds[i].gameObject.name, pointClouds[i].gameObject, meshClouds[i].gameObject, pointClouds[i].activeSelf);
 
             y = y - 50;
             spacing = spacing - 2;
+            
         }
+        
 
     }
 	

@@ -39,6 +39,9 @@ public class HoverBeltItems : MonoBehaviour {
 
 	public void Configure (GameObject head, GameObject playerParent, GameObject left, GameObject right) { // Set player Parent to new object
 		GetComponentInParent<HoverBeltMotion> ().Configure (head, playerParent);
+        transform.localPosition = Vector3.up * baseHeight;
+        beltOpenButton.transform.localPosition = Vector3.up * baseHeight;
+
 		tempLeftInteractor = left.GetComponentInChildren<ControllerMenuInteractor>();
 		tempRightInteractor = right.GetComponentInChildren<ControllerMenuInteractor>();;
 
