@@ -8,7 +8,7 @@ public class RotateDataSet : MonoBehaviour {
     SteamVR_TrackedObject controller;
 
     public GameObject dataSet;
-    public float rotationSpeed = 50;
+    public float rotationSpeed = 0.5f;
 
     Vector3 originalRotation;
     Vector3 dataSetRotation;
@@ -38,7 +38,7 @@ public class RotateDataSet : MonoBehaviour {
         {
             Vector3 delta = controller.transform.position - controllerOrigin;
             dataSetRotation = new Vector3(0, delta.x + delta.z, 0);
-            dataSet.transform.eulerAngles = originalRotation + dataSetRotation * rotationSpeed;
+            dataSet.transform.eulerAngles = originalRotation + dataSetRotation / 2;
         }
     
 

@@ -173,4 +173,8 @@ have.  Make the PCList translatable, and open and closable.  Shoot for these ite
 -Swipe through- --CHECK
 -BandiCam Footage-
 Bring build to other computer-
+
+::Weird things to watch out for::
+	-Don't leave one of the point cloud or mesh cloud groups off when you turn off the list tool.  When you try to reactivate the tool, it won't be able to find the cloud group
+you previously deactivated, and once you try to reactivate after having closed the cloud list, the program will shut down. 
 	
