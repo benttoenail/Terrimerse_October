@@ -91,7 +91,7 @@ public class HoverBeltItems : MonoBehaviour {
 		state = BeltState.Open;
 		StartCoroutine (AnimateOpen ());
 	}
-	void DoClose() {
+	public void DoClose() {
 		state = BeltState.Closed;
 		StartCoroutine (AnimateClose ());
 	}

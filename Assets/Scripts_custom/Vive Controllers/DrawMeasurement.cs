@@ -47,7 +47,7 @@ public class DrawMeasurement : MonoBehaviour {
     //Drawing measurements
     void DrawTool()
     {
-        if (triggerDown && !isIntersecting)
+        if (triggerDown)
         {
             GameObject interactor = controller.transform.FindChild("Interactor").gameObject;
             //toolPrefab = Instantiate(measureTool, controller.transform.position, Quaternion.identity) as GameObject;
@@ -71,6 +71,7 @@ public class DrawMeasurement : MonoBehaviour {
     //Set intersecting bool to "true" when interactor is intersecting
     //Don't draw if interacting with another Measurement tool
     //NOT WORKING!!!
+    
     public void IsInSphere()
     {
         print("Controller has Entered");
@@ -94,10 +95,6 @@ public class DrawMeasurement : MonoBehaviour {
     {
         isIntersecting = false;
     }
- 
-
-
-
-
+    
 
 }

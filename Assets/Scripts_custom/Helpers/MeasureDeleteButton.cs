@@ -23,6 +23,7 @@ public class MeasureDeleteButton : MonoBehaviour {
   
     }
 
+    
     void InTool(VRMenuEventData e)
     {
         //Tell draw tool not to draw!
@@ -35,4 +36,5 @@ public class MeasureDeleteButton : MonoBehaviour {
         //Tell tool to draw!!
         drawComponent.GetComponent<DrawMeasurement>().IsOutSphere();
     }
+    
 }
