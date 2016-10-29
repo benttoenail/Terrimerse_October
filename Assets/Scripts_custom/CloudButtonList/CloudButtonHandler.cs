@@ -5,15 +5,17 @@ using System.Collections.Generic;
 
 public class CloudButtonHandler : MonoBehaviour {
 
-   // [SerializeField] GameObject DataSet;
+    // [SerializeField] GameObject DataSet;
     [SerializeField]
-    GameObject DataSetMeshes;
+    Transform DataSetMeshes;
 
     [SerializeField]
-    GameObject DataSetPointClouds;
+    Transform DataSetPointClouds;
 
     [SerializeField]
     GameObject blockPrefab;
+
+    GameObject DataSet;
 
     //Leave these for now - they may come in handy later...
     public delegate void CloudListEventHandler(string s);
@@ -34,8 +36,10 @@ public class CloudButtonHandler : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        DataSetMeshes = GameObject.FindGameObjectWithTag("MeshClouds");
-        DataSetPointClouds = GameObject.FindGameObjectWithTag("PointClouds");
+        DataSet = GameObject.FindGameObjectWithTag("DataSet");
+
+        DataSetMeshes = DataSet.gameObject.transform.Find("DataSet 17 - 41/MeshedCloud_dataSet");
+        DataSetPointClouds = DataSet.gameObject.transform.Find("DataSet 17 - 41/PointCloud_dataSet");
 
         float y = 50;
         float spacing = 0;

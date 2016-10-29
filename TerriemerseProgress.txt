@@ -196,5 +196,19 @@ the sphere won't release and become attached to the controller.
 		-I may have to somehow cache the data whenever I open and close - but there's gotta be an easier solution than that...
 	-Is there a way to find objects that are deactivated?
 	-Add Scripts to PC / Mesh lists akin to CloudBlock Script-
+	-Find DataSet Object when instatiating PC and Mesh clouds- -- CHECK
+
+
+::Current Issues -- 161029::
+-CloudButtons scale async with your own scale when instiating them-
+-Draw tool sometimes gets parented to controller 
+-PCList opening needs to be optomized more - Need to take player's rotation into account ie instiate in front of player
+
+::Things that'd be nice::
+-Belt opens a little too slow
+-Graphics for each tool
+-An icon that instatiates onto controller signifiying which tool is active 
+-Global measurments??
+
 
 	
