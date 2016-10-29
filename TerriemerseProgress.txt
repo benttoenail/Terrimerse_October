@@ -171,10 +171,30 @@ have.  Make the PCList translatable, and open and closable.  Shoot for these ite
 -MC and PC buttons need to find clouds- CHECK
 -Turn off belt when select tool- -CHECK
 -Swipe through- --CHECK
+-Slow down rotation-
 -BandiCam Footage-
 Bring build to other computer-
 
 ::Weird things to watch out for::
 	-Don't leave one of the point cloud or mesh cloud groups off when you turn off the list tool.  When you try to reactivate the tool, it won't be able to find the cloud group
 you previously deactivated, and once you try to reactivate after having closed the cloud list, the program will shut down. 
+	-When using the measuring tool, remember it's origin of creation.  You can delete the measurement tool by clicking the origin sphere, and if you draw another measurement 
+and END the measurement in another measurement's origin, the sphere won't release from the controller.  If that happens, use the other controller to delete that current measurment's 
+origin sphere. 
+
+:Bam:
+
+::161029::
+-The measurement tool is a major issue at the moment - I cannnot delete a measurement from both spheres, and if I'm drawing a sphere and release it into another sphere, or origin sphere,
+the sphere won't release and become attached to the controller.
+	-Figure out how youre deleting the sphere- CHECK
+	-Add VRMenuButton and MeasureDeleteButton after parenting sphere_02 to measurement tool - CHECK
+	-Be Able to draw a sphere while in another sphere- -- IN PROGRESS
+
+-Game shuts down when spawning list when one of the lists is turned off-
+	-How are the buttons that work handling it?
+		-I may have to somehow cache the data whenever I open and close - but there's gotta be an easier solution than that...
+	-Is there a way to find objects that are deactivated?
+	-Add Scripts to PC / Mesh lists akin to CloudBlock Script-
+
 	

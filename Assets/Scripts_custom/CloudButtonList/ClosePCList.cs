@@ -16,7 +16,8 @@ public class ClosePCList : MonoBehaviour {
 
     void CloseList(VRMenuEventData e)
     {
-        PCListHandler.SetActive(false);
+        //PCListHandler.SetActive(false);
+        Destroy(PCListHandler);
     }
 
 }

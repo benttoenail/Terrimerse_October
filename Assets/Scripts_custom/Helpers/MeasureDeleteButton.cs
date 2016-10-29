@@ -23,18 +23,38 @@ public class MeasureDeleteButton : MonoBehaviour {
   
     }
 
-    
+
+    //Set "Measurement object" to delete if this object is Sphere_02
+    public void SetDrawComponent(GameObject obj)
+    {
+        if (drawComponent == null)
+        {
+            drawComponent = obj;
+        }
+    }
+
+
     void InTool(VRMenuEventData e)
     {
         //Tell draw tool not to draw!
         //print("Measure button event FIRED!!");
-        drawComponent.GetComponent<DrawMeasurement>().IsInSphere();
+        if(drawComponent != null)
+        {
+            drawComponent.GetComponent<DrawMeasurement>().IsInSphere();
+        }
+        
     }
 
     void OutTool(VRMenuEventData e)
     {
         //Tell tool to draw!!
-        drawComponent.GetComponent<DrawMeasurement>().IsOutSphere();
+        if(drawComponent != null)
+        {
+            drawComponent.GetComponent<DrawMeasurement>().IsOutSphere();
+        }
+        
     }
     
+
+  
 }

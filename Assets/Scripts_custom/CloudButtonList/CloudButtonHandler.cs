@@ -45,6 +45,7 @@ public class CloudButtonHandler : MonoBehaviour {
         GameObject[] pointClouds = new GameObject[count];
         GameObject[] meshClouds = new GameObject[count];
 
+
         for(int i = 0; i < count; i++)
         {
             pointClouds[i] = DataSetPointClouds.transform.GetChild(i).gameObject;

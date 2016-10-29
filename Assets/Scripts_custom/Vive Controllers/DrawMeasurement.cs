@@ -27,6 +27,7 @@ public class DrawMeasurement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
         if (transform.parent.GetComponentInChildren<ControllerMenuInteractor>().isIntersecting)
         {
             return;
@@ -47,23 +48,34 @@ public class DrawMeasurement : MonoBehaviour {
     //Drawing measurements
     void DrawTool()
     {
-        if (triggerDown)
+        //if (triggerDown)
+        if(triggerDown)
         {
             GameObject interactor = controller.transform.FindChild("Interactor").gameObject;
-            //toolPrefab = Instantiate(measureTool, controller.transform.position, Quaternion.identity) as GameObject;
             toolPrefab = Instantiate(measureTool, interactor.transform.position, Quaternion.identity) as GameObject;
 
-            //int childCount = DataSet.transform.childCount;
             toolPrefab.transform.parent = GameObject.FindGameObjectWithTag("DataSet").transform; //Will have to find the Dataset again!  
 
             sphere02 = toolPrefab.transform.FindChild("Sphere_02");
             sphere02.transform.parent = controller.transform;
+
         }
 
         if (triggerUp)
         {
             sphere02.transform.parent = toolPrefab.transform;
+            sphere02.gameObject.AddComponent<VRMenuButton>();
+            sphere02.gameObject.AddComponent<MeasureDeleteButton>();
+
+            //If sphere ends up being attached to controller -- NOT WORKING
+            if (sphere02.transform.parent == controller.transform)
+            {
+                Destroy(sphere02);
+            }
+
         }
+
+
 
     }
 
