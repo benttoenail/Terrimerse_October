@@ -6,6 +6,8 @@ public class ToolTracker : MonoBehaviour {
     public GameObject currentTool;
     public GameObject clonedTool;
 
+    public GameObject interactor;
+
     Transform controller;
     GameObject controllerObj;
 

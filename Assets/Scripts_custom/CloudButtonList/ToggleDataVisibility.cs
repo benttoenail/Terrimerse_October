@@ -19,10 +19,12 @@ public class ToggleDataVisibility : MonoBehaviour {
         DataSet = GameObject.FindGameObjectWithTag("DataSet");
 
         //Find appropriate DataSet based on Object Name
+        //Turn off PointCloud Group
         if(gameObject.name == "Button_Toggle_PC")
         {
             DataSetChild = DataSet.gameObject.transform.Find("DataSet 17 - 41/PointCloud_dataSet");
             vizSphere = gameObject.transform.Find("VizSphere");
+           // DataSetChild.gameObject.SetActive(false);
         }
         else if (gameObject.name == "Button_Toggle_Mesh")
         {
