@@ -211,4 +211,13 @@ the sphere won't release and become attached to the controller.
 -Global measurments??
 
 
-	
+::161031::
+-What I did for tonight
+	-Fixed the culling issue for the menu items
+	-Replaced interactor tool with different mesh for every tool
+	-Replaced the hoverbelt 
+	-Start off the application with meshes 
+-Do this-
+	-If there is no active tool, attach regular interactor shape -CHECK
+
+		

@@ -6,6 +6,8 @@ public class DemoBeltButtonThing : MonoBehaviour {
 	public GameObject myPrefab; //Prefab Gameobject with toolScript attached
     HoverBeltItems HoverBelt;
 
+    public Mesh mesh;
+
 	// Use this for initialization
 	void Start () {
 		myButton = GetComponent<VRMenuButton> ();
@@ -23,7 +25,7 @@ public class DemoBeltButtonThing : MonoBehaviour {
 
         //Update ToolTracker
         ToolTracker toolTracker = controllerObj.GetComponentInChildren<ToolTracker>();
-        toolTracker.UpdateCurrentTool(myPrefab);
+        toolTracker.UpdateCurrentTool(myPrefab, mesh);
 
         HoverBelt.DoClose();
 	}
