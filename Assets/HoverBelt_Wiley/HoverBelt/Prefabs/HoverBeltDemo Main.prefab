@@ -89,7 +89,7 @@ GameObject:
   - 4: {fileID: 4000011253640508}
   - 114: {fileID: 114000012286652992}
   m_Layer: 8
-  m_Name: HoverBeltDemo Main 1
+  m_Name: HoverBeltDemo Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

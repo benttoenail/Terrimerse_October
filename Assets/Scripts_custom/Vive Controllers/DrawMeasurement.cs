@@ -48,7 +48,6 @@ public class DrawMeasurement : MonoBehaviour {
     //Drawing measurements
     void DrawTool()
     {
-        //if (triggerDown)
         if(triggerDown)
         {
             GameObject interactor = controller.transform.FindChild("Interactor").gameObject;
@@ -65,7 +64,7 @@ public class DrawMeasurement : MonoBehaviour {
         {
             sphere02.transform.parent = toolPrefab.transform;
             sphere02.gameObject.AddComponent<VRMenuButton>();
-            sphere02.gameObject.AddComponent<MeasureDeleteButton>();
+            sphere02.gameObject.AddComponent<MeasureObjectControl>();
 
             //If sphere ends up being attached to controller -- NOT WORKING
             if (sphere02.transform.parent == controller.transform)
@@ -74,8 +73,6 @@ public class DrawMeasurement : MonoBehaviour {
             }
 
         }
-
-
 
     }
 
@@ -86,7 +83,7 @@ public class DrawMeasurement : MonoBehaviour {
     
     public void IsInSphere()
     {
-        print("Controller has Entered");
+        //print("Controller has Entered");
         SetIntersectingOn();
        // SetIntersectingOn();
     }
@@ -98,7 +95,7 @@ public class DrawMeasurement : MonoBehaviour {
 
     public void IsOutSphere()
     {
-        print("Controller has Exited");
+        //print("Controller has Exited");
         SetIntersectingOff();
         //isIntersecting = false;
     }

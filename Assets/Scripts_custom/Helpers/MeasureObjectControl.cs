@@ -1,19 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MeasureDeleteButton : MonoBehaviour {
+public class MeasureObjectControl : MonoBehaviour {
 	VRMenuButton myButton;
     public GameObject drawComponent;
 
-	//public GameObject myPrefab; //Prefab Gameobject with toolScript attached
+    GameObject player;
 
 	// Use this for initialization
 	void Start () {
+
+        player = GameObject.FindGameObjectWithTag("Player");
+
 		myButton = GetComponent<VRMenuButton> ();
 
 		myButton.OnClick += DoStuff;
         myButton.OnIn += InTool;
         myButton.OnOut += OutTool;
+
+        //print(player.transform.localScale);
 	}
 
 	void DoStuff(VRMenuEventData e) {
@@ -21,6 +26,35 @@ public class MeasureDeleteButton : MonoBehaviour {
         GameObject measurementParent = transform.parent.gameObject;
         Destroy(measurementParent);
   
+    }
+
+    void Update()
+    {
+        if (ScaleDataAndObjects.isScaling)
+        {
+            return;
+        }
+        else
+        {
+            ScaleMeasureObjects();
+        }
+        
+    }
+
+    void ScaleMeasureObjects()
+    {
+        float max = 350.0f;
+        float min = 50.0f;
+        Vector3 playerScale = player.transform.localScale;
+
+        if(playerScale.x > max || playerScale.x < min)
+        {
+            return;
+        }
+        else
+        {
+            transform.localScale = player.transform.localScale / 10;
+        }
     }
 
 
@@ -37,7 +71,6 @@ public class MeasureDeleteButton : MonoBehaviour {
     void InTool(VRMenuEventData e)
     {
         //Tell draw tool not to draw!
-        //print("Measure button event FIRED!!");
         if(drawComponent != null)
         {
             drawComponent.GetComponent<DrawMeasurement>().IsInSphere();

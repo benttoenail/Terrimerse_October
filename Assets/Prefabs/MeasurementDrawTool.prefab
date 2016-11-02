@@ -23,7 +23,7 @@ GameObject:
   - 135: {fileID: 135000011741988766}
   - 23: {fileID: 23000014147667280}
   - 54: {fileID: 54000013038201022}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere_02
   m_TagString: MeasureSphere
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - 4: {fileID: 4000011834119860}
   - 23: {fileID: 23000014212457566}
   - 102: {fileID: 102000014034551018}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TextPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - 54: {fileID: 54000011972084368}
   - 114: {fileID: 114000012965077978}
   - 114: {fileID: 114000013044453146}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere_01
   m_TagString: MeasureSphere
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   - 120: {fileID: 120000013932074204}
   - 114: {fileID: 114000012074032662}
   - 23: {fileID: 23000012861658034}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MeasurementDrawTool
   m_TagString: MeasureTool
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ Transform:
   m_GameObject: {fileID: 1000010672568800}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000013905922268}
@@ -120,7 +120,7 @@ Transform:
   m_GameObject: {fileID: 1000011902410930}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000013905922268}
@@ -263,14 +263,14 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010672568800}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: f0b962a9d0b334541b49e4c9b7a2b26a, type: 3}
 --- !u!33 &33000013145257000
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011902410930}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: f0b962a9d0b334541b49e4c9b7a2b26a, type: 3}
 --- !u!54 &54000011972084368
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -336,7 +336,7 @@ MonoBehaviour:
   sphere01: {fileID: 1000011902410930}
   sphere02: {fileID: 1000010672568800}
   textPlane: {fileID: 1000010848872180}
-  playerHead: {fileID: 146900, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
+  player: {fileID: 0}
 --- !u!114 &114000012965077978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -415,7 +415,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.05
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135000013014782240
 SphereCollider:
@@ -427,5 +427,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.05
   m_Center: {x: 0, y: 0, z: 0}

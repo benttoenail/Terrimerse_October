@@ -7,7 +7,7 @@ public class MeasureTool : MonoBehaviour {
 	public GameObject sphere02;
 	public GameObject textPlane;
 
-	public GameObject playerHead;
+    public GameObject player;
 
 	Vector3[] points = new Vector3[2];
 
@@ -17,6 +17,7 @@ public class MeasureTool : MonoBehaviour {
 	void Start () {
 		
 		line = GetComponent<LineRenderer>();
+        player = GameObject.FindGameObjectWithTag("Player");
 
 	}
 	
@@ -51,5 +52,20 @@ public class MeasureTool : MonoBehaviour {
 		textPlane.GetComponent<TextMesh>().text = distance;
 
 	}
+
+    Vector3 playerScale;
+    public Vector3 FindScale(Vector3 _playerScale)
+    {
+        playerScale = _playerScale;
+        return playerScale;
+    }
 		
+
+    public void UpdateMeasureObjectSize()
+    {
+
+        
+
+    }
+
 }

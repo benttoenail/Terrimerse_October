@@ -220,4 +220,7 @@ the sphere won't release and become attached to the controller.
 -Do this-
 	-If there is no active tool, attach regular interactor shape -CHECK
 
-		
+
+::161101::
+-Scaling Measurements with rig
+	-When I intersect with the Measurement tools, they scale back down to their regular size-		
