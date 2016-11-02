@@ -189,6 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myPrefab: {fileID: 1000013678359764, guid: 9cdb78fed8c7cf546814accac2a3dea1, type: 2}
+  mesh: {fileID: 0}
 --- !u!114 &114000013600500854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -234,7 +235,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Move
+  m_Text: Moves
 --- !u!222 &222000012417013094
 CanvasRenderer:
   m_ObjectHideFlags: 1

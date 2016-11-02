@@ -12,6 +12,7 @@ public class DrawMeasurement : MonoBehaviour {
     bool triggerUp = false;
 
     public GameObject measureTool;
+    public GameObject measureShape;
 
     GameObject toolPrefab;
     Transform sphere02;
@@ -30,7 +31,7 @@ public class DrawMeasurement : MonoBehaviour {
 
         if (transform.parent.GetComponentInChildren<ControllerMenuInteractor>().isIntersecting)
         {
-            return;
+           // return;
         }
         controller = gameObject.GetComponentInParent<SteamVR_TrackedObject>();
         device = SteamVR_Controller.Input((int)controller.index);
@@ -45,19 +46,30 @@ public class DrawMeasurement : MonoBehaviour {
 
     }
 
+    void DrawToolTwo()
+    {
+
+    }
+
     //Drawing measurements
     void DrawTool()
     {
-        if(triggerDown)
+        GameObject interactor = controller.transform.FindChild("Interactor").gameObject;
+        if (triggerDown)
         {
-            GameObject interactor = controller.transform.FindChild("Interactor").gameObject;
+            //GameObject interactor = controller.transform.FindChild("Interactor").gameObject;
             toolPrefab = Instantiate(measureTool, interactor.transform.position, Quaternion.identity) as GameObject;
 
             toolPrefab.transform.parent = GameObject.FindGameObjectWithTag("DataSet").transform; //Will have to find the Dataset again!  
 
             sphere02 = toolPrefab.transform.FindChild("Sphere_02");
-            sphere02.transform.parent = controller.transform;
+            //sphere02.transform.parent = controller.transform;   
 
+        }
+
+        if (triggerHoldDown)
+        {
+            sphere02.transform.position = interactor.transform.position;
         }
 
         if (triggerUp)
@@ -65,12 +77,7 @@ public class DrawMeasurement : MonoBehaviour {
             sphere02.transform.parent = toolPrefab.transform;
             sphere02.gameObject.AddComponent<VRMenuButton>();
             sphere02.gameObject.AddComponent<MeasureObjectControl>();
-
-            //If sphere ends up being attached to controller -- NOT WORKING
-            if (sphere02.transform.parent == controller.transform)
-            {
-                Destroy(sphere02);
-            }
+ 
 
         }
 
