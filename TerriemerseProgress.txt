@@ -233,3 +233,11 @@ the sphere won't release and become attached to the controller.
 	-The scaling of the measurement tools is still not perfect- 
 	-Add graphics for each button - Scene still very ugly
 
+
+::161102::
+-For a moment I thought I had things working-
+	-I'm able to spawn the PCList anywhere within the vicinity of the headSet, but when I scale it ends up in strange places
+	-If I'm scaled down it ends up really far away, if I'm scaled large it ends up right inside of me
+	-I believe I need to divide the scale of the rig into the fwd float
+-Scaling is the number one problem of this application - Without it, everything would work like it should-
+	-Why can't I just scale the data and why did I decide to scale the entire rig?

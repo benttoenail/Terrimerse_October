@@ -37,8 +37,9 @@ public class OpenPCList : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("MainCamera");//Get player's headPosition
         playerRig = GameObject.FindGameObjectWithTag("Player");
 
-        float fwd = 2.5f;
+        
         float divideScale = playerRig.transform.localScale.x;
+        float fwd = 0.1f * divideScale / 200;
         playerPos = player.transform.position; // playerRig.transform.localScale.x;
         
         Vector3 spawnPos = playerPos / divideScale;//Vector3.Scale(player.transform.localPosition, playerRig.transform.localScale);
