@@ -34,8 +34,8 @@ public class CloudButtonHandler : MonoBehaviour {
     }
 
 	// Use this for initialization
-	void Start () {
-
+	//void Start () {
+    public void InitDataSet(Quaternion _rotation) { 
         DataSet = GameObject.FindGameObjectWithTag("DataSet");
 
         DataSetMeshes = DataSet.gameObject.transform.Find("DataSet 17 - 41/MeshedCloud_dataSet");
@@ -63,7 +63,8 @@ public class CloudButtonHandler : MonoBehaviour {
             spacing = spacing - 2;
             
         }
-        
+
+        PCListTransform.transform.rotation = _rotation;
     }
 	
 }

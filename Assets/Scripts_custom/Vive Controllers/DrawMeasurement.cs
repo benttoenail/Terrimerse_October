@@ -43,10 +43,6 @@ public class DrawMeasurement : MonoBehaviour {
 
     }
 
-    void DrawToolTwo()
-    {
-
-    }
 
     //Drawing measurements
     void DrawTool()
