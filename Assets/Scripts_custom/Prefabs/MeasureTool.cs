@@ -13,21 +13,25 @@ public class MeasureTool : MonoBehaviour {
 
 	LineRenderer line;
 
+    string distance;
+
 	// Use this for initialization
 	void Start () {
 		
 		line = GetComponent<LineRenderer>();
         player = GameObject.FindGameObjectWithTag("Player");
 
+        DrawMeasurement.OnDrawDone += MakeText;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		Vector3 pos1 = sphere01.transform.position;
-		Vector3 pos2 = sphere02.transform.position;
+        Vector3 pos1 = sphere01.transform.position;
+        Vector3 pos2 = sphere02.transform.position;
 
-		points[0] = pos1;
+        points[0] = pos1;
 		points[1] = pos2;
 
 		line.SetPositions(points);
@@ -47,11 +51,17 @@ public class MeasureTool : MonoBehaviour {
 		textPlane.transform.Rotate(0, 180, 0);
 
 		float dist = Vector3.Distance(_pos1, _pos2);
-		string distance = dist.ToString();
+        //string distance = dist.ToString();
+        distance = dist.ToString();
 
-		textPlane.GetComponent<TextMesh>().text = distance;
-
+		//textPlane.GetComponent<TextMesh>().text = distance;
 	}
+
+    //When Drawing has finished, create text
+    void MakeText()
+    {
+        textPlane.GetComponent<TextMesh>().text = distance;
+    }
 
     Vector3 playerScale;
     public Vector3 FindScale(Vector3 _playerScale)
@@ -60,12 +70,5 @@ public class MeasureTool : MonoBehaviour {
         return playerScale;
     }
 		
-
-    public void UpdateMeasureObjectSize()
-    {
-
-        
-
-    }
 
 }

@@ -21,7 +21,6 @@ public class CloudBlock : MonoBehaviour {
         pointCloud = pc;
         meshCloud = mc;
         vizSphere.SetActive(isCloudActive);
-        print(isCloudActive);
     }
 
 	// Use this for initialization
@@ -42,16 +41,12 @@ public class CloudBlock : MonoBehaviour {
             pointCloud.SetActive(false);
             meshCloud.SetActive(false);
 
-            print("Turning off PC");
-            print(pointCloud.activeSelf);
             vizSphere.SetActive(false);
         } else
         {
             pointCloud.SetActive(true);
             meshCloud.SetActive(true);
 
-            print("Turning On PC");
-            print(pointCloud.activeSelf);
             vizSphere.SetActive(true);
         }
     }

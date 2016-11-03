@@ -39,7 +39,7 @@ public class OpenPCList : MonoBehaviour {
 
         
         float divideScale = playerRig.transform.localScale.x;
-        float fwd = 0.1f * divideScale / 200;
+        float fwd = 0.7f;
         playerPos = player.transform.position; // playerRig.transform.localScale.x;
         
         Vector3 spawnPos = playerPos / divideScale;//Vector3.Scale(player.transform.localPosition, playerRig.transform.localScale);

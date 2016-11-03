@@ -48,7 +48,8 @@ public class ScaleDataAndObjects : MonoBehaviour {
 
             startingScale = pivotPoint.transform.localScale;
             pivotPoint.transform.position = controller.transform.position;
-            player.transform.SetParent(pivotPoint.transform);
+            //player.transform.SetParent(pivotPoint.transform);
+            dataSet.transform.SetParent(pivotPoint.transform);
 
         }
 
@@ -69,7 +70,8 @@ public class ScaleDataAndObjects : MonoBehaviour {
         if (device.GetTouchUp(SteamVR_Controller.ButtonMask.Trigger))
         {
             isScaling = false;
-            player.transform.SetParent(null);
+            //player.transform.SetParent(null);
+            dataSet.transform.SetParent(null);
 
         }
 

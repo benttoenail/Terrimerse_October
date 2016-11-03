@@ -7,6 +7,10 @@ public class DrawMeasurement : MonoBehaviour {
     SteamVR_Controller.Device device;
     SteamVR_TrackedObject controller;
 
+    //EVENTS
+    public delegate void DrawingDone();
+    public static event DrawingDone OnDrawDone;
+
     bool triggerHoldDown = false;
     bool triggerDown = false;
     bool triggerUp = false;
@@ -18,13 +22,6 @@ public class DrawMeasurement : MonoBehaviour {
     Transform sphere02;
 
     bool isIntersecting = false;
-
-    // Use this for initialization
-    void Start () {
-
-        //controller = gameObject.GetComponent<SteamVR_TrackedObject>();
-
-    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -57,13 +54,11 @@ public class DrawMeasurement : MonoBehaviour {
         GameObject interactor = controller.transform.FindChild("Interactor").gameObject;
         if (triggerDown)
         {
-            //GameObject interactor = controller.transform.FindChild("Interactor").gameObject;
             toolPrefab = Instantiate(measureTool, interactor.transform.position, Quaternion.identity) as GameObject;
 
             toolPrefab.transform.parent = GameObject.FindGameObjectWithTag("DataSet").transform; //Will have to find the Dataset again!  
 
             sphere02 = toolPrefab.transform.FindChild("Sphere_02");
-            //sphere02.transform.parent = controller.transform;   
 
         }
 
@@ -77,8 +72,8 @@ public class DrawMeasurement : MonoBehaviour {
             sphere02.transform.parent = toolPrefab.transform;
             sphere02.gameObject.AddComponent<VRMenuButton>();
             sphere02.gameObject.AddComponent<MeasureObjectControl>();
- 
 
+            OnDrawDone();
         }
 
     }

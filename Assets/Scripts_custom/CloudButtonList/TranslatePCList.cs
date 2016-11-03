@@ -48,13 +48,11 @@ public class TranslatePCList : MonoBehaviour {
 
     void TranslateList(VRMenuEventData e)
     {
-        print("Moving list!");
         listIsMoving = true;
     }
 
     void StopList(VRMenuEventData e)
     {
-        print("Stoping list!");
         listIsMoving = false;
     }
 }
