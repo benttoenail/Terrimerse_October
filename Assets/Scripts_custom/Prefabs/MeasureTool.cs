@@ -51,16 +51,18 @@ public class MeasureTool : MonoBehaviour {
 		textPlane.transform.Rotate(0, 180, 0);
 
 		float dist = Vector3.Distance(_pos1, _pos2);
-        //string distance = dist.ToString();
         distance = dist.ToString();
 
-		//textPlane.GetComponent<TextMesh>().text = distance;
 	}
 
     //When Drawing has finished, create text
     void MakeText()
     {
-        textPlane.GetComponent<TextMesh>().text = distance;
+        if(textPlane != null)
+        {
+            textPlane.GetComponent<TextMesh>().text = distance;
+        }
+        
     }
 
     Vector3 playerScale;

@@ -14,6 +14,8 @@ public class DrawMeasurement : MonoBehaviour {
     bool triggerHoldDown = false;
     bool triggerDown = false;
     bool triggerUp = false;
+    bool isDragging;
+    Vector3 origin;
 
     public GameObject measureTool;
     public GameObject measureShape;
@@ -37,9 +39,11 @@ public class DrawMeasurement : MonoBehaviour {
         triggerDown = device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger);
         triggerUp = device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger);
 
-       print("Intersecting is equal to: " + isIntersecting);
+        print("Intersecting is equal to: " + isIntersecting);
 
-       DrawTool();
+        DrawTool();
+
+        print(isDragging);
 
     }
 
@@ -48,6 +52,8 @@ public class DrawMeasurement : MonoBehaviour {
     void DrawTool()
     {
         GameObject interactor = controller.transform.FindChild("Interactor").gameObject;
+        
+
         if (triggerDown)
         {
             toolPrefab = Instantiate(measureTool, interactor.transform.position, Quaternion.identity) as GameObject;
@@ -56,11 +62,20 @@ public class DrawMeasurement : MonoBehaviour {
 
             sphere02 = toolPrefab.transform.FindChild("Sphere_02");
 
+            origin = interactor.transform.position;
+
         }
 
         if (triggerHoldDown)
         {
-            sphere02.transform.position = interactor.transform.position;
+            //check to see if Dragging
+            float dist = Vector3.Distance(origin, interactor.transform.position);
+            if(dist > 2.5)
+            {
+                sphere02.transform.position = interactor.transform.position;
+                isDragging = true;
+            }
+            
         }
 
         if (triggerUp)
@@ -69,7 +84,12 @@ public class DrawMeasurement : MonoBehaviour {
             sphere02.gameObject.AddComponent<VRMenuButton>();
             sphere02.gameObject.AddComponent<MeasureObjectControl>();
 
-            OnDrawDone();
+            if (isDragging || sphere02.transform.parent == interactor)
+            {
+                OnDrawDone();
+                isDragging = false;
+            }
+            
         }
 
     }

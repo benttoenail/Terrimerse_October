@@ -247,4 +247,4 @@ the sphere won't release and become attached to the controller.
 -PCList-
 	-How do I get the PCList to orient in the same direction as the rest of the items? - CHECK
 -MeasureTool-
-	-If I click without dragging the app crashes - looking for the text plane -
+	-If I click without dragging the app crashes - looking for the text plane - CHECK
