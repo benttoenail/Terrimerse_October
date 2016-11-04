@@ -21,7 +21,7 @@ GameObject:
   - 224: {fileID: 224000011343947332}
   - 222: {fileID: 222000011633824798}
   - 114: {fileID: 114000013384527776}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - 33: {fileID: 33000012224779434}
   - 135: {fileID: 135000011129351986}
   - 23: {fileID: 23000010521085928}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: VizSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - 33: {fileID: 33000012231341662}
   - 136: {fileID: 136000012151411202}
   - 23: {fileID: 23000013406902276}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - 4: {fileID: 4000013273735830}
   - 114: {fileID: 114000013620496834}
   - 114: {fileID: 114000011941211390}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Button_ClosePCList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - 224: {fileID: 224000010364973180}
   - 222: {fileID: 222000012497820184}
   - 114: {fileID: 114000012895152612}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - 4: {fileID: 4000010300927822}
   - 114: {fileID: 114000010301470852}
   - 114: {fileID: 114000010262456832}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Button_up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011290969402}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ButtonObjects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011049270552}
   - 114: {fileID: 114000012978497362}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CloudButtonHandler
   m_TagString: PCList
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - 33: {fileID: 33000010611401042}
   - 65: {fileID: 65000010599525674}
   - 23: {fileID: 23000011315867504}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   - 4: {fileID: 4000010524457262}
   - 114: {fileID: 114000011601757936}
   - 114: {fileID: 114000010099354876}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Button_down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   - 224: {fileID: 224000013710209166}
   - 222: {fileID: 222000012755755464}
   - 114: {fileID: 114000010459572982}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   - 4: {fileID: 4000013470906018}
   - 114: {fileID: 114000013184279936}
   - 114: {fileID: 114000010214660630}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PCList_handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +225,7 @@ GameObject:
   - 224: {fileID: 224000014188687474}
   - 223: {fileID: 223000011893750666}
   - 114: {fileID: 114000011674034412}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FrontDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   - 4: {fileID: 4000012825165310}
   - 114: {fileID: 114000011234074590}
   - 114: {fileID: 114000010921774096}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Button_Toggle_PC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   - 224: {fileID: 224000013816643450}
   - 222: {fileID: 222000011840483994}
   - 114: {fileID: 114000013267420694}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ GameObject:
   - 33: {fileID: 33000010276068430}
   - 65: {fileID: 65000010485090776}
   - 23: {fileID: 23000014110827920}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   - 224: {fileID: 224000013534667436}
   - 223: {fileID: 223000011109509364}
   - 114: {fileID: 114000011588680396}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FrontDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,7 +312,7 @@ GameObject:
   - 33: {fileID: 33000012339865158}
   - 65: {fileID: 65000012439919766}
   - 23: {fileID: 23000011195305108}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,7 +329,7 @@ GameObject:
   - 224: {fileID: 224000013868297538}
   - 223: {fileID: 223000013686567316}
   - 114: {fileID: 114000010373498458}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FrontDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   - 33: {fileID: 33000013223979788}
   - 135: {fileID: 135000010116861880}
   - 23: {fileID: 23000011290037672}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: VizSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,7 +364,7 @@ GameObject:
   - 4: {fileID: 4000011879284828}
   - 114: {fileID: 114000013416976980}
   - 114: {fileID: 114000013252708344}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Button_Toggle_Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +382,7 @@ GameObject:
   - 33: {fileID: 33000012781557876}
   - 65: {fileID: 65000013949766144}
   - 23: {fileID: 23000011653447010}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,7 +399,7 @@ GameObject:
   - 224: {fileID: 224000011712572048}
   - 223: {fileID: 223000013793757190}
   - 114: {fileID: 114000011362603460}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FrontDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -416,7 +416,7 @@ GameObject:
   - 224: {fileID: 224000012872519058}
   - 222: {fileID: 222000010561848818}
   - 114: {fileID: 114000011512453638}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -433,7 +433,7 @@ GameObject:
   - 224: {fileID: 224000012268434204}
   - 223: {fileID: 223000013325010290}
   - 114: {fileID: 114000013511227104}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FrontDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,7 +451,7 @@ GameObject:
   - 33: {fileID: 33000010537473554}
   - 65: {fileID: 65000010474385288}
   - 23: {fileID: 23000011532720040}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

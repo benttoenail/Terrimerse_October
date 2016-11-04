@@ -248,3 +248,9 @@ the sphere won't release and become attached to the controller.
 	-How do I get the PCList to orient in the same direction as the rest of the items? - CHECK
 -MeasureTool-
 	-If I click without dragging the app crashes - looking for the text plane - CHECK
+
+::POST::
+	-I Changed the scaling functionality - we Now scale the data set and not the entire rig
+	-The draw tool is more stable - created an isdragging bool and fixed problem that was causing app to crash
+	-Fixed Drawing tool measurements so that when scaling dataset the measurements will stay the same
+	-The PCList tool shows up in a designated area everytime - plus, since scaling is different we don't have to worry about finding the right scale 
