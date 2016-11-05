@@ -16,6 +16,11 @@ public class OpenPCList : MonoBehaviour {
     //For Debugging
     GameObject debugShape;
 
+    //Send event to StateManager
+    public delegate void PCListOpen();
+    public static event PCListOpen PCListOpened;
+    public static event PCListOpen PCListClosed;
+
     // Use this for initialization
     void Start () {
 
@@ -28,6 +33,10 @@ public class OpenPCList : MonoBehaviour {
 
     void OpenList(VRMenuEventData e)
     {
+
+        //Send event to StateManager
+        PCListOpened();
+
         //Get player position and move PCList to that position when opened
 
         player = GameObject.FindGameObjectWithTag("MainCamera");//Get player's headPosition
@@ -55,6 +64,7 @@ public class OpenPCList : MonoBehaviour {
         else
         {
             Destroy(PCListHandler);
+            PCListClosed();
         }
         
     }

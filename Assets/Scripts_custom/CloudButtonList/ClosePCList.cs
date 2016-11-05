@@ -5,6 +5,9 @@ public class ClosePCList : MonoBehaviour {
     public VRMenuButton myButton;
     [SerializeField] GameObject PCListHandler;
 
+    public delegate void CLosedPCList();
+    public static event CLosedPCList ListIsCLosed;
+
     // Use this for initialization
     void Start()
     {
@@ -18,6 +21,9 @@ public class ClosePCList : MonoBehaviour {
     {
         //PCListHandler.SetActive(false);
         Destroy(PCListHandler);
+
+        //Send event to StateManager
+        ListIsCLosed();
     }
 
 }

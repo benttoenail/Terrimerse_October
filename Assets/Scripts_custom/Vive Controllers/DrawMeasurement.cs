@@ -41,8 +41,6 @@ public class DrawMeasurement : MonoBehaviour {
 
 		DrawTool ();	
 
-        print(isDragging);
-
     }
 
 

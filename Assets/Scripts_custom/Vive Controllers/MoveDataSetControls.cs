@@ -36,7 +36,6 @@ public class MoveDataSetControls : MonoBehaviour {
 		}
 
 		if (device.GetPress (SteamVR_Controller.ButtonMask.Trigger)) {
-            print("moving!!");
             Vector3 delta =   controller.transform.position - controllerOrigin;
 			dataSet.transform.position = delta + dataSetOrigin;
 		}
