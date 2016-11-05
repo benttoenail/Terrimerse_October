@@ -15,6 +15,9 @@ public class ToolTracker : MonoBehaviour {
     Transform controller;
     GameObject controllerObj;
 
+    public delegate void ToolUpdated(GameObject _tool, GameObject _controller);
+    public static event ToolUpdated ToolWasUpdated;
+
 
     public void UpdateCurrentTool(GameObject _currentTool, Mesh _mesh)
     {
@@ -30,6 +33,9 @@ public class ToolTracker : MonoBehaviour {
         anInstance.transform.SetParent(controllerObj.transform, false);
         currentTool = anInstance;
         ReplaceMesh(_mesh);
+
+        //Send Event to StateManager
+        ToolWasUpdated(currentTool, controllerObj);
         
     }
 

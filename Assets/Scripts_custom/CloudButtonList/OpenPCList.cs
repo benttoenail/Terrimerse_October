@@ -59,13 +59,4 @@ public class OpenPCList : MonoBehaviour {
         
     }
 
-    // Update is called once per frame
-    void Update () {
-        /*
-        if(PCListHandler != null)
-        {
-            print("Moving the list");
-            PCListHandler.transform.position = playerPos + optimalPos;
-        }*/
-	}
 }

@@ -59,8 +59,8 @@ GameObject:
   - 135: {fileID: 135000013014782240}
   - 23: {fileID: 23000012040287382}
   - 54: {fileID: 54000011972084368}
-  - 114: {fileID: 114000012965077978}
   - 114: {fileID: 114000013044453146}
+  - 114: {fileID: 114000012583065922}
   m_Layer: 8
   m_Name: Sphere_01
   m_TagString: MeasureSphere
@@ -337,7 +337,7 @@ MonoBehaviour:
   sphere02: {fileID: 1000010672568800}
   textPlane: {fileID: 1000010848872180}
   player: {fileID: 0}
---- !u!114 &114000012965077978
+--- !u!114 &114000012583065922
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -345,7 +345,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000011902410930}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9808023ad5121e24ebc5bc881653d45c, type: 3}
+  m_Script: {fileID: 11500000, guid: 98f061b8a0d0e084680e12e17ad93603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   modelRenderer: {fileID: 0}

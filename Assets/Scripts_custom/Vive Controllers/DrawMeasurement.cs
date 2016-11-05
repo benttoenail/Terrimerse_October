@@ -20,18 +20,18 @@ public class DrawMeasurement : MonoBehaviour {
     public GameObject measureTool;
     public GameObject measureShape;
 
+	const float minDragDistance = 0.5f;
+
     GameObject toolPrefab;
     Transform sphere02;
 
-    bool isIntersecting = false;
-	
+	ControllerMenuInteractor interactor; 
+	void Start() {
+		interactor = transform.parent.GetComponentInChildren<ControllerMenuInteractor> ();
+	}
+
 	// Update is called once per frame
 	void Update () {
-
-        if (transform.parent.GetComponentInChildren<ControllerMenuInteractor>().isIntersecting)
-        {
-           // return;
-        }
         controller = gameObject.GetComponentInParent<SteamVR_TrackedObject>();
         device = SteamVR_Controller.Input((int)controller.index);
 
@@ -39,9 +39,7 @@ public class DrawMeasurement : MonoBehaviour {
         triggerDown = device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger);
         triggerUp = device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger);
 
-        print("Intersecting is equal to: " + isIntersecting);
-
-        DrawTool();
+		DrawTool ();	
 
         print(isDragging);
 
@@ -50,78 +48,55 @@ public class DrawMeasurement : MonoBehaviour {
 
     //Drawing measurements
     void DrawTool()
-    {
-        GameObject interactor = controller.transform.FindChild("Interactor").gameObject;
-        
+	{
+		if(triggerDown) {
+			if (interactor.isIntersecting) {
+				foreach (VRMenuItem item in interactor.intersectedItems) {
+					if (item.tag == "MeasureSphere") {
+						sphere02 = item.transform;
+						break;
+					}
+				}
+			} else {
+				toolPrefab = Instantiate (measureTool, interactor.transform.position, Quaternion.identity) as GameObject;
 
-        if (triggerDown)
-        {
-            toolPrefab = Instantiate(measureTool, interactor.transform.position, Quaternion.identity) as GameObject;
+				toolPrefab.transform.parent = GameObject.FindGameObjectWithTag ("DataSet").transform; //Will have to find the Dataset again!  
 
-            toolPrefab.transform.parent = GameObject.FindGameObjectWithTag("DataSet").transform; //Will have to find the Dataset again!  
+				sphere02 = toolPrefab.transform.FindChild ("Sphere_02");
 
-            sphere02 = toolPrefab.transform.FindChild("Sphere_02");
+				origin = interactor.transform.position;
+			}
+		}
 
-            origin = interactor.transform.position;
-
-        }
-
-        if (triggerHoldDown)
+        if (triggerHoldDown && sphere02 != null)
         {
             //check to see if Dragging
             float dist = Vector3.Distance(origin, interactor.transform.position);
-            if(dist > 2.5)
+            if(dist > minDragDistance)
             {
                 sphere02.transform.position = interactor.transform.position;
                 isDragging = true;
             }
-            
-        }
+        
+		}
 
         if (triggerUp)
         {
-            sphere02.transform.parent = toolPrefab.transform;
-            sphere02.gameObject.AddComponent<VRMenuButton>();
-            sphere02.gameObject.AddComponent<MeasureObjectControl>();
-
-            if (isDragging || sphere02.transform.parent == interactor)
+            if(sphere02 != null)
             {
-                OnDrawDone();
-                isDragging = false;
+                sphere02.transform.parent = toolPrefab.transform;
+                sphere02.gameObject.AddComponent<VRMenuItem>();
+                sphere02.gameObject.AddComponent<MeasureObjectControl>();
+
+                if (isDragging || sphere02.transform.parent == interactor)
+                {
+                    sphere02.GetComponentInParent<MeasureTool>().MakeText();
+                    isDragging = false;
+                }
             }
             
+			sphere02 = null;
         }
 
     }
-
-
-    //Set intersecting bool to "true" when interactor is intersecting
-    //Don't draw if interacting with another Measurement tool
-    //NOT WORKING!!!
-    
-    public void IsInSphere()
-    {
-        //print("Controller has Entered");
-        SetIntersectingOn();
-       // SetIntersectingOn();
-    }
-
-    private void SetIntersectingOn()
-    {
-        isIntersecting = true;
-    }
-
-    public void IsOutSphere()
-    {
-        //print("Controller has Exited");
-        SetIntersectingOff();
-        //isIntersecting = false;
-    }
-
-    private void SetIntersectingOff()
-    {
-        isIntersecting = false;
-    }
-    
-
 }

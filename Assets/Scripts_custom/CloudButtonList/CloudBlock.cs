@@ -7,48 +7,46 @@ using Valve.VR;
 
 public class CloudBlock : MonoBehaviour {
 
-    VRMenuButton myButton;
+    VRMenuCheckbox checkbox;
 
     public GameObject text;
-    public GameObject vizSphere;
+
     public string cloudName;
     GameObject pointCloud;
     GameObject meshCloud;
 
     public void GetCloudData(string n, GameObject pc, GameObject mc, bool isCloudActive)
-    {
+	{
+		checkbox = GetComponent<VRMenuCheckbox> ();
         cloudName = n;
         pointCloud = pc;
         meshCloud = mc;
-        vizSphere.SetActive(isCloudActive);
+		StartCoroutine (UpdateVis (isCloudActive));
     }
+
+
+	IEnumerator UpdateVis(bool val) {
+		yield return new WaitForEndOfFrame ();
+		checkbox.state = val;
+	}
 
 	// Use this for initialization
 	void Start () {
+		checkbox = GetComponent<VRMenuCheckbox> ();
 
-        myButton = GetComponent<VRMenuButton>();
-        myButton.OnPointerDown += ToggleViz;
+
+		checkbox.OnStateChange += HandleStateChange;
+
 
         text.GetComponent<Text>().text = cloudName;
-        
+
+
     }
 
-    void ToggleViz(VRMenuEventData e)
+	void HandleStateChange(bool visibleState)
     {
-        print("clicked!");
-        if (pointCloud.activeSelf)
-        {
-            pointCloud.SetActive(false);
-            meshCloud.SetActive(false);
-
-            vizSphere.SetActive(false);
-        } else
-        {
-            pointCloud.SetActive(true);
-            meshCloud.SetActive(true);
-
-            vizSphere.SetActive(true);
-        }
+		pointCloud.SetActive (visibleState);
+		meshCloud.SetActive (visibleState);
     }
 
 }

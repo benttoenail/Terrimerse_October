@@ -254,3 +254,34 @@ the sphere won't release and become attached to the controller.
 	-The draw tool is more stable - created an isdragging bool and fixed problem that was causing app to crash
 	-Fixed Drawing tool measurements so that when scaling dataset the measurements will stay the same
 	-The PCList tool shows up in a designated area everytime - plus, since scaling is different we don't have to worry about finding the right scale 
+
+
+::161103::
+-Color-
+	-Before showing this off tomorrow, I should get the color right-
+	-This includes creating a tighter background scene-
+	-Mock up in Gimp-
+	-Made some cool lines with the Line Renderer - Seems to have a huge GPU overhead... 
+		--Should probably do it with geometry instead 
+-Valve renderer-	
+	-I added the renderer, and it made everything look great - only problem, it makes the whole scene jump periodically...  I could spend the next few hours debugging this, 
+but for now lets build this copy and go to bed.  
+-Gradient Background
+	-Added a nice gradient background to the scene- 
+
+
+::161105::
+-Adding buttons - bringing in changes made at Media Lab - Importing Johnathon's project
+	-Alot to do, and I've gotta proceed with caution - I've been experiencing unexpected events with my project and the project running at MIT
+	-When bringing in the changes made yesterday, I need to only replace the assets folder within the Terrimmerse_Project - it should work 
+-Bring Wiley's changes into main project- CHECK
+-Replace buttons with your own preFab-
+	-Change text color- CHECK
+-Make Radial Rings follow the DataSet - CHECK
+
+-Scene Manager-	
+	-An object that follows the current state the app is in - turns on and off certiain functionality based on paticular state- 
+	-As a test, see if you can turn off all tool when PCList is open-
+
+-Measure tool-
+	-I'm now having problems whereas the measuretool is looking for an object that isn't there- shutting down program-

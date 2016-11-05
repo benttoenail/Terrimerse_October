@@ -46,7 +46,7 @@ public class HoverBeltItems : MonoBehaviour {
 		tempRightInteractor = right.GetComponentInChildren<ControllerMenuInteractor>();;
 
 		// Assign listeners
-		beltOpenButton.OnClick += HandleBeltClick;
+		beltOpenButton.OnPointerDown += HandleBeltClick;
 		tempLeftInteractor.OnEmptyClick += HandleOffClick;
 		tempRightInteractor.OnEmptyClick += HandleOffClick;
 

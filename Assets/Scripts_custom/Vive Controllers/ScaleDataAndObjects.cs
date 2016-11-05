@@ -67,7 +67,7 @@ public class ScaleDataAndObjects : MonoBehaviour {
 
         
         //Unparent the object from the pivot Gameobject
-        if (device.GetTouchUp(SteamVR_Controller.ButtonMask.Trigger))
+        if (device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger))
         {
             isScaling = false;
             //player.transform.SetParent(null);
@@ -78,5 +78,8 @@ public class ScaleDataAndObjects : MonoBehaviour {
         previousControllerPosition = controller.transform.position;
     }
 
+	void OnDestroy() {
+		isScaling = false;
+	}
 
 }

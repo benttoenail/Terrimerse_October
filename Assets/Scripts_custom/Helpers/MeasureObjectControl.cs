@@ -2,21 +2,23 @@
 using System.Collections;
 
 public class MeasureObjectControl : MonoBehaviour {
-	VRMenuButton myButton;
+	VRMenuItem myButton;
     public GameObject drawComponent;
+
+	GameObject dataSet;
 
     GameObject player;
 
 	// Use this for initialization
 	void Start () {
 
+		dataSet = GameObject.FindGameObjectWithTag ("DataSet");
+
         player = GameObject.FindGameObjectWithTag("Player");
 
-		myButton = GetComponent<VRMenuButton> ();
+		myButton = GetComponent<VRMenuItem> ();
 
 		myButton.OnClick += DoStuff;
-        myButton.OnIn += InTool;
-        myButton.OnOut += OutTool;
 
         //print(player.transform.localScale);
 	}
@@ -30,14 +32,9 @@ public class MeasureObjectControl : MonoBehaviour {
 
     void Update()
     {
-        if (ScaleDataAndObjects.isScaling)
-        {
-            return;
-        }
-        else
-        {
-            ScaleMeasureObjects();
-        }
+		if (!ScaleDataAndObjects.isScaling) {
+			ScaleMeasureObjects ();
+		}
         
     }
 
@@ -45,16 +42,10 @@ public class MeasureObjectControl : MonoBehaviour {
     {
         float max = 350.0f;
         float min = 50.0f;
-        Vector3 playerScale = player.transform.localScale;
 
-        if(playerScale.x > max || playerScale.x < min)
-        {
-            return;
-        }
-        else
-        {
-            transform.localScale = player.transform.localScale / 10;
-        }
+		Vector3 dataSetScale = dataSet.transform.localScale / 0.1f;
+
+		transform.localScale = dataSetScale;
     }
 
 
@@ -65,27 +56,6 @@ public class MeasureObjectControl : MonoBehaviour {
         {
             drawComponent = obj;
         }
-    }
-
-
-    void InTool(VRMenuEventData e)
-    {
-        //Tell draw tool not to draw!
-        if(drawComponent != null)
-        {
-            drawComponent.GetComponent<DrawMeasurement>().IsInSphere();
-        }
-        
-    }
-
-    void OutTool(VRMenuEventData e)
-    {
-        //Tell tool to draw!!
-        if(drawComponent != null)
-        {
-            drawComponent.GetComponent<DrawMeasurement>().IsOutSphere();
-        }
-        
     }
     
 

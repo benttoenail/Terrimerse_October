@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public abstract class VRMenuHoverItem : VRMenuItem {
 	protected static readonly Color modelColorInteractableTrue = new Color (1, 1, 1, 0.8f);
 	protected static readonly Color modelColorInteractableFalse = new Color (0.5f, 0.5f, 0.5f, 0.5f);
-	protected static readonly Color displayColorInteractableTrue = new Color (0,0,0);
+	protected static readonly Color displayColorInteractableTrue = new Color (1,1,1); // Starting Color?
 	protected static readonly Color displayColorInteractableFalse = new Color (0.3f,0.3f,0.3f);
 
 	protected static readonly float hoverAnimationLength = 0.2f;

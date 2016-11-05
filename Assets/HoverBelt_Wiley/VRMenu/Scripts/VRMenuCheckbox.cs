@@ -12,19 +12,17 @@ public class VRMenuCheckbox : VRMenuHoverItem {
 		get { return _state; }
 
 		set {
-			if (_state != value) {
-				if (value) {
-					SetModelColor (modelColorStateTrue);
-					SetDisplayColor (displayColorStateTrue);
-					transform.localScale *= scaleFactorStateTrue;
-				} else {
-					SetModelColor (modelColorInteractableTrue);
-					SetDisplayColor (displayColorInteractableTrue);
-					transform.localScale *= scaleFactorStateTrue;
-				}
-				if (OnStateChange != null) {
-					OnStateChange (value);
-				}
+			if (value) {
+				SetModelColor (modelColorStateTrue);
+				SetDisplayColor (displayColorStateTrue);
+				transform.localScale *= scaleFactorStateTrue;
+			} else {
+				SetModelColor (modelColorInteractableTrue);
+				SetDisplayColor (displayColorInteractableTrue);
+				transform.localScale *= scaleFactorStateTrue;
+			}
+			if (OnStateChange != null) {
+				OnStateChange (value);
 			}
 			_state = value;
 		}
@@ -34,7 +32,7 @@ public class VRMenuCheckbox : VRMenuHoverItem {
 
 	public override void Start() {
 		base.Start();
-		OnClick += HandleToggle;
+		OnPointerDown += HandleToggle;
 	}
 
 

@@ -20,9 +20,6 @@ public class MeasureTool : MonoBehaviour {
 		
 		line = GetComponent<LineRenderer>();
         player = GameObject.FindGameObjectWithTag("Player");
-
-        DrawMeasurement.OnDrawDone += MakeText;
-
 	}
 	
 	// Update is called once per frame
@@ -35,6 +32,7 @@ public class MeasureTool : MonoBehaviour {
 		points[1] = pos2;
 
 		line.SetPositions(points);
+
 
 		DoTextPlane(pos1, pos2);
 	
@@ -52,11 +50,10 @@ public class MeasureTool : MonoBehaviour {
 
 		float dist = Vector3.Distance(_pos1, _pos2);
         distance = dist.ToString();
-
 	}
 
     //When Drawing has finished, create text
-    void MakeText()
+    public void MakeText()
     {
         if(textPlane != null)
         {

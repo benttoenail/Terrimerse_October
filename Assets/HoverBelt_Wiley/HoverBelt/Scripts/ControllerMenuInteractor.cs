@@ -5,8 +5,7 @@ using System;
 
 public class ControllerMenuInteractor : MonoBehaviour {
 	
-	private List<VRMenuItem> intersectedItems = new List<VRMenuItem>();
-    public VRMenuItem intersectedItem; // Added this to return item to other scripts
+	public List<VRMenuItem> intersectedItems = new List<VRMenuItem>();
 	private SteamVR_TrackedObject trackedObj;
 
 	public event VRMenuItem.VRMenuEvent OnEmptyClick;
