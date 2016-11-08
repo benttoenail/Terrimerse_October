@@ -2,7 +2,7 @@
 using System.Collections;
 using Valve.VR;
 
-public class ScaleDataAndObjects : MonoBehaviour {
+public class ScaleDataAndObjects : ControllerFunctionality {
 
     SteamVR_Controller.Device device;
     SteamVR_TrackedObject controller;
@@ -21,7 +21,12 @@ public class ScaleDataAndObjects : MonoBehaviour {
     GameObject dataSet;
     MeasureTool measureTool;
 
-    
+    bool triggerHoldDown = false;
+    bool triggerDown = false;
+    bool triggerUp = false;
+
+    ControllerMenuInteractor interactor;
+
     // Use this for initialization
     void Start () {
 
@@ -29,11 +34,14 @@ public class ScaleDataAndObjects : MonoBehaviour {
         pivotPoint = new GameObject();
         pivotPoint.transform.localScale = new Vector3(1, 1, 1);
         dataSet = GameObject.FindGameObjectWithTag("DataSet");
-        
+
+        interactor = transform.parent.GetComponentInChildren<ControllerMenuInteractor>();
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    public override void HandleInput()
+    {
 
         controller = gameObject.GetComponentInParent<SteamVR_TrackedObject>();
         device = SteamVR_Controller.Input((int)controller.index);
@@ -50,7 +58,7 @@ public class ScaleDataAndObjects : MonoBehaviour {
             pivotPoint.transform.position = controller.transform.position;
             //player.transform.SetParent(pivotPoint.transform);
             dataSet.transform.SetParent(pivotPoint.transform);
-
+            isPerformingAction = true;
         }
 
         //Scale object to controller position
@@ -63,6 +71,8 @@ public class ScaleDataAndObjects : MonoBehaviour {
             currentScale += scaleValue;
             pivotPoint.transform.localScale = startingScale * (currentScale / referenceScale) ;
 
+            interactor.ignoreMenus = true;
+
         }
 
         
@@ -73,6 +83,8 @@ public class ScaleDataAndObjects : MonoBehaviour {
             //player.transform.SetParent(null);
             dataSet.transform.SetParent(null);
 
+            interactor.ignoreMenus = false;
+            isPerformingAction = false;
         }
 
         previousControllerPosition = controller.transform.position;

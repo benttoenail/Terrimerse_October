@@ -282,6 +282,36 @@ but for now lets build this copy and go to bed.
 -Scene Manager-	
 	-An object that follows the current state the app is in - turns on and off certiain functionality based on paticular state- 
 	-As a test, see if you can turn off all tool when PCList is open-
+-BKGColor-
+	-Color bkgGround to change according to stateChange- 
 
 -Measure tool-
 	-I'm now having problems whereas the measuretool is looking for an object that isn't there- shutting down program-
+
+
+::161106::
+-Preparing things-
+	-The plan today is to go to the media and do as much as possible.  My best use of time will be to prepare as much as possible, like cleaning up the scene, figuring out all
+of the existing problems and cataloguing them.
+	-What are the problems that you'd like to solve at the media lab?
+		-Implmenting the CrossSection dataSet
+			-Add button that sets global state - CHECK
+			-Nullifies controllers - CHECK -- DO NOT DO THIS - Leave Tools active
+			-Bring in CrossSectionDataSet - CHECK
+			-Makes planes interactive- 
+		-Figure out why MeasureTool crashes program when deleting 
+			-Deletes tool after moving (inconsistant) -Seems to happen according to speed moved?
+			-The measurement tool will not be destroyed (inconsistant)
+
+
+::161107::
+-Some final touches-
+	-Replace buttons in PClist with your button prefab- CHECK
+	-Create Reset Button- 
+	-Have background color change when entering CrossSection View- 
+	-Upload to git, without Big Data Set-  
+
+::current Issues::
+-Belt is no longer closing when-
+	-I click on PCList, or Cross Section
+	-When I click outside of the belt

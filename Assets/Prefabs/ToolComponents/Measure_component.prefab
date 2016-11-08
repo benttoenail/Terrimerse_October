@@ -51,5 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca363ef2dbdd97f4fa318bb9885bd7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  measureTool: {fileID: 1000011957677478, guid: 43c586969056a5647a172056ca42f689,
+  isPerformingAction: 0
+  measureToolPrefab: {fileID: 1000011957677478, guid: 43c586969056a5647a172056ca42f689,
     type: 2}
+  measureShape: {fileID: 0}

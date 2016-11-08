@@ -20,6 +20,7 @@ TagManager:
   - Interactor
   - MeshClouds
   - PointClouds
+  - CrossSection
   layers:
   - Default
   - TransparentFX

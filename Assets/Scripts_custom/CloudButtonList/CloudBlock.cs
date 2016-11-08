@@ -25,28 +25,35 @@ public class CloudBlock : MonoBehaviour {
     }
 
 
-	IEnumerator UpdateVis(bool val) {
+    IEnumerator UpdateVis(bool val) {
 		yield return new WaitForEndOfFrame ();
 		checkbox.state = val;
 	}
 
+    //Call from StateManager
+    public void UpdateVisMethod(bool val)
+    {
+        StartCoroutine(UpdateVis(val));
+    }
+
 	// Use this for initialization
 	void Start () {
-		checkbox = GetComponent<VRMenuCheckbox> ();
 
+		checkbox = GetComponent<VRMenuCheckbox> ();
 
 		checkbox.OnStateChange += HandleStateChange;
 
-
         text.GetComponent<Text>().text = cloudName;
-
 
     }
 
-	void HandleStateChange(bool visibleState)
+    public bool currentState = false;
+
+    public void HandleStateChange(bool visibleState)
     {
 		pointCloud.SetActive (visibleState);
 		meshCloud.SetActive (visibleState);
+        currentState = visibleState;
     }
 
 }

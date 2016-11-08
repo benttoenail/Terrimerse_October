@@ -15,9 +15,11 @@ public class MeasureTool : MonoBehaviour {
 
     string distance;
 
+    GameObject dataset;
+
 	// Use this for initialization
 	void Start () {
-		
+        dataset = GameObject.FindGameObjectWithTag("DataSet");
 		line = GetComponent<LineRenderer>();
         player = GameObject.FindGameObjectWithTag("Player");
 	}
@@ -25,17 +27,18 @@ public class MeasureTool : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        Vector3 pos1 = sphere01.transform.position;
-        Vector3 pos2 = sphere02.transform.position;
+        if(sphere01 != null && sphere02 != null)
+        {
+            Vector3 pos1 = sphere01.transform.position;
+            Vector3 pos2 = sphere02.transform.position;
 
-        points[0] = pos1;
-		points[1] = pos2;
+            points[0] = pos1;
+            points[1] = pos2;
 
-		line.SetPositions(points);
+            line.SetPositions(points);
+            DoTextPlane(pos1, pos2);
+        }
 
-
-		DoTextPlane(pos1, pos2);
-	
 	}
 
 	void DoTextPlane(Vector3 _pos1, Vector3 _pos2) {
@@ -48,7 +51,7 @@ public class MeasureTool : MonoBehaviour {
 		textPlane.transform.LookAt(Camera.main.transform.position, transform.up);
 		textPlane.transform.Rotate(0, 180, 0);
 
-		float dist = Vector3.Distance(_pos1, _pos2);
+		float dist = Vector3.Distance(_pos1, _pos2) / dataset.transform.localScale.x;
         distance = dist.ToString();
 	}
 

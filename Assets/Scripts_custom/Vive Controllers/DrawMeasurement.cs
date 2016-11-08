@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Valve.VR;
+using System.Collections.Generic;
 
-public class DrawMeasurement : MonoBehaviour {
+public class DrawMeasurement : ControllerFunctionality {
 
     SteamVR_Controller.Device device;
     SteamVR_TrackedObject controller;
+
+    const float deleteTimeThreshold = 0.5f;
+    const float deleteDistThreshold = 5.0f;
+    float dragTime = 0.0f;
 
     //EVENTS
     public delegate void DrawingDone();
@@ -14,16 +19,15 @@ public class DrawMeasurement : MonoBehaviour {
     bool triggerHoldDown = false;
     bool triggerDown = false;
     bool triggerUp = false;
-    bool isDragging;
     Vector3 origin;
 
-    public GameObject measureTool;
+    public GameObject measureToolPrefab;
     public GameObject measureShape;
 
-	const float minDragDistance = 0.5f;
-
-    GameObject toolPrefab;
+    GameObject measureToolInstance;
     Transform sphere02;
+
+    List<MeasureObjectControl> intersectedSpheres = new List<MeasureObjectControl>();
 
 	ControllerMenuInteractor interactor; 
 	void Start() {
@@ -31,16 +35,31 @@ public class DrawMeasurement : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	public override void HandleInput () {
         controller = gameObject.GetComponentInParent<SteamVR_TrackedObject>();
         device = SteamVR_Controller.Input((int)controller.index);
-
+        
         triggerHoldDown = device.GetPress(SteamVR_Controller.ButtonMask.Trigger);
         triggerDown = device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger);
         triggerUp = device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger);
 
-		DrawTool ();	
+        DrawTool ();
 
+    }
+
+    public void NotifySphereEnter(MeasureObjectControl sphere)
+    {
+        if (!intersectedSpheres.Contains(sphere))
+        {
+            intersectedSpheres.Add(sphere);
+        }
+    }
+    public void NotifySphereExit(MeasureObjectControl sphere)
+    {
+        if (!isPerformingAction)
+        {
+            intersectedSpheres.Remove(sphere);
+        }
     }
 
 
@@ -48,52 +67,56 @@ public class DrawMeasurement : MonoBehaviour {
     void DrawTool()
 	{
 		if(triggerDown) {
-			if (interactor.isIntersecting) {
-				foreach (VRMenuItem item in interactor.intersectedItems) {
-					if (item.tag == "MeasureSphere") {
-						sphere02 = item.transform;
-						break;
-					}
-				}
-			} else {
-				toolPrefab = Instantiate (measureTool, interactor.transform.position, Quaternion.identity) as GameObject;
+			if (intersectedSpheres.Count == 0) {
+				measureToolInstance = Instantiate (measureToolPrefab, interactor.transform.position, Quaternion.identity) as GameObject;
 
-				toolPrefab.transform.parent = GameObject.FindGameObjectWithTag ("DataSet").transform; //Will have to find the Dataset again!  
+				measureToolInstance.transform.parent = GameObject.FindGameObjectWithTag ("DataSet").transform; //Will have to find the Dataset again!  
+                 
+				sphere02 = measureToolInstance.transform.FindChild ("Sphere_02");
 
-				sphere02 = toolPrefab.transform.FindChild ("Sphere_02");
+            }
+            origin = interactor.transform.position;
+            isPerformingAction = true;
+            dragTime = 0.0f;
 
-				origin = interactor.transform.position;
-			}
 		}
 
-        if (triggerHoldDown && sphere02 != null)
+        if (triggerHoldDown)
         {
-            //check to see if Dragging
-            float dist = Vector3.Distance(origin, interactor.transform.position);
-            if(dist > minDragDistance)
+            foreach (MeasureObjectControl sphere in intersectedSpheres)
+            {
+                sphere.transform.position = interactor.transform.position;
+                sphere.GetComponentInParent<MeasureTool>().MakeText();
+            }
+            if (sphere02 != null)
             {
                 sphere02.transform.position = interactor.transform.position;
-                isDragging = true;
             }
-        
-		}
+            dragTime += Time.deltaTime;
+        }
 
         if (triggerUp)
         {
             if(sphere02 != null)
             {
-                sphere02.transform.parent = toolPrefab.transform;
-                sphere02.gameObject.AddComponent<VRMenuItem>();
+                measureToolInstance.transform.FindChild("Sphere_01").gameObject.AddComponent<MeasureObjectControl>();
+                sphere02.transform.parent = measureToolInstance.transform;
                 sphere02.gameObject.AddComponent<MeasureObjectControl>();
-
-                if (isDragging || sphere02.transform.parent == interactor)
-                {
-                    sphere02.GetComponentInParent<MeasureTool>().MakeText();
-                    isDragging = false;
-                }
+                sphere02.GetComponentInParent<MeasureTool>().MakeText();
+                sphere02 = null;
+                measureToolInstance = null;
             }
-            
-			sphere02 = null;
+
+            if(dragTime < deleteTimeThreshold && Vector3.Distance(origin,interactor.transform.position) < deleteDistThreshold)
+            {
+                for(int i = intersectedSpheres.Count - 1; i >= 0; i --)
+                {
+                    Destroy(intersectedSpheres[i].transform.parent.gameObject);
+                }
+                intersectedSpheres.Clear();
+            }
+
+            isPerformingAction = false;
         }
 
     }

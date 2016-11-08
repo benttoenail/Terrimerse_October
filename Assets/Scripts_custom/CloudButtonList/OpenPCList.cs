@@ -35,7 +35,7 @@ public class OpenPCList : MonoBehaviour {
     {
 
         //Send event to StateManager
-        PCListOpened();
+        //PCListOpened();
 
         //Get player position and move PCList to that position when opened
 
@@ -60,6 +60,8 @@ public class OpenPCList : MonoBehaviour {
             PCListHandler.transform.SetParent(playerRig.transform, false);
 
             PCListHandler.GetComponent<CloudButtonHandler>().InitDataSet(rotationPos);
+
+            PCListOpened();
         }
         else
         {

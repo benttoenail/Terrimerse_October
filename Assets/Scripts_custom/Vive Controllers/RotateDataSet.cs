@@ -2,7 +2,7 @@
 using System.Collections;
 using Valve.VR;
 
-public class RotateDataSet : MonoBehaviour {
+public class RotateDataSet : ControllerFunctionality {
 
     SteamVR_Controller.Device device;
     SteamVR_TrackedObject controller;
@@ -14,15 +14,21 @@ public class RotateDataSet : MonoBehaviour {
     Vector3 dataSetRotation;
     Vector3 controllerOrigin;
 
+    bool triggerHoldDown = false;
+    bool triggerDown = false;
+    bool triggerUp = false;
+
+    ControllerMenuInteractor interactor;
+
     // Use this for initialization
     void Start () {
-       // dataSet = GameObject.Find("TestMoveCube!"); // Had to do this to find object...
         dataSet = GameObject.FindGameObjectWithTag("DataSet");
-        //controller = gameObject.GetComponent<SteamVR_TrackedObject>();
+        interactor = transform.parent.GetComponentInChildren<ControllerMenuInteractor>();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    public override void HandleInput()
+    {
 
         controller = gameObject.GetComponentInParent<SteamVR_TrackedObject>();
         device = SteamVR_Controller.Input((int)controller.index);
@@ -39,6 +45,11 @@ public class RotateDataSet : MonoBehaviour {
             Vector3 delta = controller.transform.position - controllerOrigin;
             dataSetRotation = new Vector3(0, delta.x + delta.z, 0);
             dataSet.transform.eulerAngles = originalRotation + dataSetRotation / 2;
+            isPerformingAction = true;
+
+        }else
+        {
+            isPerformingAction = false;
         }
     
 

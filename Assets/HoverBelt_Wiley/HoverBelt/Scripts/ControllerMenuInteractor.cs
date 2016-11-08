@@ -4,18 +4,28 @@ using System.Collections.Generic;
 using System;
 
 public class ControllerMenuInteractor : MonoBehaviour {
-	
+
+    List<GameObject> otherBlockingItems = new List<GameObject>();
 	public List<VRMenuItem> intersectedItems = new List<VRMenuItem>();
 	private SteamVR_TrackedObject trackedObj;
+
+    public bool ignoreMenus = false;
 
 	public event VRMenuItem.VRMenuEvent OnEmptyClick;
 
 	public bool isIntersecting {
 		get {
-			return intersectedItems.Count > 0;
+            return intersectedItems.Count > 0;
 		}
 	}
 
+    public bool isBlocked
+    {
+        get
+        {
+            return otherBlockingItems.Count > 0;
+        }
+    }
 
 	public void Start() {
 		GetComponent<MeshRenderer> ().material.color = new Color (1, 0, 0, 0.25f);
@@ -28,35 +38,54 @@ public class ControllerMenuInteractor : MonoBehaviour {
 		VRMenuItem item = other.GetComponentInParent<VRMenuItem> ();
 		if (item != null) {
 			intersectedItems.Add (item);
-			item.NotifyIn ();
+            item.NotifyIn();
 
-			if (isPointerDown) {
-				item.NotifyPointerDown ();
-			}
-		}
-		GetComponent<MeshRenderer> ().material.color = new Color (0, 1, 0, 0.25f);
-	}
+            if (isPointerDown)
+            {
+                item.NotifyPointerDown();
+            }
+        }
+        GetComponent<MeshRenderer>().material.color = new Color(0, 1, 0, 0.25f);
+    }
 
 	void OnTriggerExit(Collider other) {
 		VRMenuItem item = other.GetComponentInParent<VRMenuItem> ();
 		if (item != null) {
 			intersectedItems.Remove (item);
+            if (isPointerDown)
+            {
+                item.NotifyPointerUp();
+            }
 
-			if (isPointerDown) {
-				item.NotifyPointerUp ();
-			}
+            item.NotifyOut();
+        }
+        if (!isIntersecting)
+        {
+            GetComponent<MeshRenderer>().material.color = new Color(1, 0, 0, 0.25f);
+        }
+    }
 
-			item.NotifyOut ();
-		}
-		if (!isIntersecting) {
-			GetComponent<MeshRenderer> ().material.color = new Color (1, 0, 0, 0.25f);
-		}
-	}
+    public void AddBlock(GameObject go)
+    {
+        otherBlockingItems.Add(go);
+        GetComponent<MeshRenderer>().material.color = new Color(0, 1, 0, 0.25f);
+
+    }
+
+    public void RemoveBlock(GameObject go)
+    {
+        otherBlockingItems.Remove(go);
+        if (!isIntersecting)
+        {
+            GetComponent<MeshRenderer>().material.color = new Color(1, 0, 0, 0.25f);
+        }
+
+    }
 
 
-	/* Begin click detection code */
+    /* Begin click detection code */
 
-	private float prevDown = Mathf.NegativeInfinity;
+    private float prevDown = Mathf.NegativeInfinity;
 	private float lastDown = Mathf.NegativeInfinity;
 	private float lastUp = Mathf.NegativeInfinity;
 
@@ -65,8 +94,22 @@ public class ControllerMenuInteractor : MonoBehaviour {
 	private static readonly float clickDuration = 0.5f;
 	private static readonly float doubleClickPauseDuration = 0.2f;
 
+    public ControllerFunctionality currentFunctionality;
+
+    bool doMenuInteractions { get { return isIntersecting && (currentFunctionality == null || !currentFunctionality.isPerformingAction) && !isBlocked; } }
+
 	void Update() {
-		HandleInput ();
+        if(doMenuInteractions)
+        {
+            HandleInput();
+        }
+        else if(!isBlocked)
+        {
+            if (currentFunctionality != null)
+            {
+                currentFunctionality.HandleInput();
+            }
+        }
 	}
 
 	public virtual void HandleInput() {
@@ -120,12 +163,13 @@ public class ControllerMenuInteractor : MonoBehaviour {
 	}
 
 	protected virtual void HandlePointerDown() {
-		foreach (VRMenuItem item in intersectedItems) {
+        foreach (VRMenuItem item in intersectedItems) {
 			item.NotifyPointerDown (VRMenuEventData.FromVive(trackedObj));
 		}
 	}
 	protected virtual void HandlePointerUp() {
-		foreach (VRMenuItem item in intersectedItems) {
+        foreach (VRMenuItem item in intersectedItems) {
+        if (ignoreMenus) { return; }
 			item.NotifyPointerUp (VRMenuEventData.FromVive(trackedObj));
 		}
 	}
@@ -134,8 +178,9 @@ public class ControllerMenuInteractor : MonoBehaviour {
 			item.NotifyClick (VRMenuEventData.FromVive(trackedObj));
 		}
 	}
-	protected virtual void HandleDoubleClick() {
-		foreach (VRMenuItem item in intersectedItems) {
+	protected virtual void HandleDoubleClick()
+    {
+        foreach (VRMenuItem item in intersectedItems) {
 			item.NotifyDoubleClick (VRMenuEventData.FromVive(trackedObj));
 		}
 	}
