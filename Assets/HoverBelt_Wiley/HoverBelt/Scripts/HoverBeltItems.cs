@@ -47,8 +47,8 @@ public class HoverBeltItems : MonoBehaviour {
 
 		// Assign listeners
 		beltOpenButton.OnPointerDown += HandleBeltClick;
-		tempLeftInteractor.OnEmptyClick += HandleOffClick;
-		tempRightInteractor.OnEmptyClick += HandleOffClick;
+		tempLeftInteractor.hoverBelt = this;
+		tempRightInteractor.hoverBelt = this;
 
 		// Acquire menu items and reparent them to rotation nodes
 		numItems = transform.childCount;

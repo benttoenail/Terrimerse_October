@@ -5,17 +5,23 @@ using System;
 
 public class ControllerMenuInteractor : MonoBehaviour {
 
-    List<GameObject> otherBlockingItems = new List<GameObject>();
+	List<GameObject> blockingItems = new List<GameObject>();
 	public List<VRMenuItem> intersectedItems = new List<VRMenuItem>();
 	private SteamVR_TrackedObject trackedObj;
 
     public bool ignoreMenus = false;
 
-	public event VRMenuItem.VRMenuEvent OnEmptyClick;
+	public HoverBeltItems hoverBelt;
 
 	public bool isIntersecting {
 		get {
-            return intersectedItems.Count > 0;
+			return intersectedItems.Count > 0;
+		}
+	}
+
+	public bool isBeltOpen {
+		get {
+			return hoverBelt != null && hoverBelt.state == HoverBeltItems.BeltState.Open;
 		}
 	}
 
@@ -23,9 +29,17 @@ public class ControllerMenuInteractor : MonoBehaviour {
     {
         get
         {
-            return otherBlockingItems.Count > 0;
+            return blockingItems.Count > 0;
         }
-    }
+	}
+
+	bool doMenuInteractions
+	{
+		get {
+			return (isIntersecting || isBeltOpen) && (currentFunctionality == null || !currentFunctionality.isPerformingAction) && !isBlocked;
+		}
+	}
+
 
 	public void Start() {
 		GetComponent<MeshRenderer> ().material.color = new Color (1, 0, 0, 0.25f);
@@ -67,14 +81,14 @@ public class ControllerMenuInteractor : MonoBehaviour {
 
     public void AddBlock(GameObject go)
     {
-        otherBlockingItems.Add(go);
+        blockingItems.Add(go);
         GetComponent<MeshRenderer>().material.color = new Color(0, 1, 0, 0.25f);
 
     }
 
     public void RemoveBlock(GameObject go)
     {
-        otherBlockingItems.Remove(go);
+        blockingItems.Remove(go);
         if (!isIntersecting)
         {
             GetComponent<MeshRenderer>().material.color = new Color(1, 0, 0, 0.25f);
@@ -95,8 +109,6 @@ public class ControllerMenuInteractor : MonoBehaviour {
 	private static readonly float doubleClickPauseDuration = 0.2f;
 
     public ControllerFunctionality currentFunctionality;
-
-    bool doMenuInteractions { get { return isIntersecting && (currentFunctionality == null || !currentFunctionality.isPerformingAction) && !isBlocked; } }
 
 	void Update() {
         if(doMenuInteractions)
@@ -137,13 +149,9 @@ public class ControllerMenuInteractor : MonoBehaviour {
 				}
 				else {
 					if (isIntersecting) {
-						Debug.Log ("Click");
 						HandleClick ();
 					} else {
-						Debug.Log ("Click empty");
-						if (OnEmptyClick != null) {
-							OnEmptyClick (VRMenuEventData.FromVive(trackedObj));
-						}
+						HandleEmptyClick ();
 					}
 				}
 			}
@@ -182,6 +190,11 @@ public class ControllerMenuInteractor : MonoBehaviour {
     {
         foreach (VRMenuItem item in intersectedItems) {
 			item.NotifyDoubleClick (VRMenuEventData.FromVive(trackedObj));
+		}
+	}
+	protected virtual void HandleEmptyClick() {
+		if (isBeltOpen) {
+			hoverBelt.DoClose ();
 		}
 	}
 

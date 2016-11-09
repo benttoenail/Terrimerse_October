@@ -4,7 +4,7 @@ using System.Collections;
 public class DemoBeltButtonThing : MonoBehaviour {
 	VRMenuButton myButton;
 	public GameObject myPrefab; //Prefab Gameobject with toolScript attached
-    HoverBeltItems HoverBelt;
+	HoverBeltItems hoverBelt;
 
     public Mesh mesh;
 
@@ -13,7 +13,7 @@ public class DemoBeltButtonThing : MonoBehaviour {
 		myButton = GetComponent<VRMenuButton> ();
 		myButton.OnClick += DoStuff;
 
-        HoverBelt = GetComponentInParent<HoverBeltItems>();
+		hoverBelt = GetComponentInParent<HoverBeltItems>();
 	}
 
 	void DoStuff(VRMenuEventData e) {
@@ -27,7 +27,7 @@ public class DemoBeltButtonThing : MonoBehaviour {
         ToolTracker toolTracker = controllerObj.GetComponentInChildren<ToolTracker>();
         toolTracker.UpdateCurrentTool(myPrefab, mesh);
 
-        HoverBelt.DoClose();
+		hoverBelt.DoClose();
 	}
 
 }

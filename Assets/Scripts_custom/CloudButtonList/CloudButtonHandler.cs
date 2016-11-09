@@ -21,17 +21,17 @@ public class CloudButtonHandler : MonoBehaviour {
     public delegate void CloudListEventHandler(string s);
     public static event CloudListEventHandler BlockCreated;
 
-    GameObject PCListTransform;
+    public Transform PCListTransform;
     int count;
 
-    void Awake()
-    {
-        PCListTransform = new GameObject();
-        PCListTransform.transform.position = transform.position;
-        PCListTransform.name = "PCListTransform";
-        PCListTransform.transform.SetParent(gameObject.transform);
-        
-    }
+//    void Awake()
+//    {
+//        PCListTransform = new GameObject();
+//        PCListTransform.transform.position = transform.position;
+//        PCListTransform.name = "PCListTransform";
+//        PCListTransform.transform.SetParent(gameObject.transform);
+//        
+//    }
 
 	// Use this for initialization
 	//void Start () {
@@ -41,10 +41,10 @@ public class CloudButtonHandler : MonoBehaviour {
         DataSetMeshes = DataSet.gameObject.transform.Find("DataSet 17 - 41/MeshedCloud_dataSet");
         DataSetPointClouds = DataSet.gameObject.transform.Find("DataSet 17 - 41/PointCloud_dataSet");
 
-        float y = 50;
-        float spacing = 0;
+		float yStart = 5;
+        float yIncrement = -1;
         count = DataSetPointClouds.transform.childCount;
-        Vector3 handlerPos = transform.position;
+        Vector3 handlerPos = PCListTransform.position;
 
         GameObject[] pointClouds = new GameObject[count];
         GameObject[] meshClouds = new GameObject[count];
@@ -55,13 +55,9 @@ public class CloudButtonHandler : MonoBehaviour {
             pointClouds[i] = DataSetPointClouds.transform.GetChild(i).gameObject;
             meshClouds[i] = DataSetMeshes.transform.GetChild(i).gameObject;
 
-            GameObject block = Instantiate(blockPrefab, new Vector3(handlerPos.x, handlerPos.y + y + spacing, handlerPos.z), Quaternion.identity) as GameObject;
-            block.transform.SetParent(PCListTransform.gameObject.transform);
+            GameObject block = Instantiate(blockPrefab, new Vector3(0, yStart + i*yIncrement, 0), Quaternion.identity) as GameObject;
+            block.transform.SetParent(PCListTransform,false);
             block.GetComponent<CloudBlock>().GetCloudData(pointClouds[i].gameObject.name, pointClouds[i].gameObject, meshClouds[i].gameObject, pointClouds[i].activeSelf);
-
-            y = y - 50;
-            spacing = spacing - 2;
-            
         }
 
         PCListTransform.transform.rotation = _rotation;

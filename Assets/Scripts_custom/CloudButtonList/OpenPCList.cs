@@ -21,6 +21,8 @@ public class OpenPCList : MonoBehaviour {
     public static event PCListOpen PCListOpened;
     public static event PCListOpen PCListClosed;
 
+	HoverBeltItems hoverBelt;
+
     // Use this for initialization
     void Start () {
 
@@ -29,6 +31,7 @@ public class OpenPCList : MonoBehaviour {
         myButton = GetComponent<VRMenuButton>();
         myButton.OnClick += OpenList;
 
+		hoverBelt = GetComponentInParent<HoverBeltItems>();
     }
 
     void OpenList(VRMenuEventData e)
@@ -67,7 +70,10 @@ public class OpenPCList : MonoBehaviour {
         {
             Destroy(PCListHandler);
             PCListClosed();
-        }
+		}
+		if (hoverBelt != null) {
+			hoverBelt.DoClose ();
+		}
         
     }
 

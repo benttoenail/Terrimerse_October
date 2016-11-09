@@ -1380,6 +1380,35 @@ Material:
     - first:
         name: _Color
       second: {r: 0.42837873, g: 0.47802138, b: 0.4248941, a: 1}
+--- !u!21 &887811237
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Sprites/Default
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: PixelSnap
+      second: 0
+    m_Colors:
+    - first:
+        name: _Color
+      second: {r: 1, g: 1, b: 1, a: 1}
 --- !u!21 &909955485
 Material:
   serializedVersion: 6
@@ -1495,52 +1524,6 @@ Transform:
   - {fileID: 1066745325}
   m_Father: {fileID: 0}
   m_RootOrder: 2
---- !u!1001 &977982092
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4000011049270552, guid: 24b9023a4cc63fc43910691e0791b0d4, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011049270552, guid: 24b9023a4cc63fc43910691e0791b0d4, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011049270552, guid: 24b9023a4cc63fc43910691e0791b0d4, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011049270552, guid: 24b9023a4cc63fc43910691e0791b0d4, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011049270552, guid: 24b9023a4cc63fc43910691e0791b0d4, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011049270552, guid: 24b9023a4cc63fc43910691e0791b0d4, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011049270552, guid: 24b9023a4cc63fc43910691e0791b0d4, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011049270552, guid: 24b9023a4cc63fc43910691e0791b0d4, type: 2}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000010934300982, guid: 24b9023a4cc63fc43910691e0791b0d4, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 24b9023a4cc63fc43910691e0791b0d4, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1003596242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1809,7 +1792,113 @@ Material:
     - first:
         name: _Color
       second: {r: 0.7689102, g: 0.9047945, b: 0.5540489, a: 1}
---- !u!43 &1301306185
+--- !u!21 &1303552515
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Custom/RenderBothFaces
+  m_Shader: {fileID: 4800000, guid: bfc325c272aac5e47b2e8297ce5f0bd6, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs: []
+    m_Floats: []
+    m_Colors:
+    - first:
+        name: _Color
+      second: {r: 0.60928005, g: 0.39492875, b: 0.42989248, a: 1}
+--- !u!21 &1309490181
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Custom/RenderBothFaces
+  m_Shader: {fileID: 4800000, guid: bfc325c272aac5e47b2e8297ce5f0bd6, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs: []
+    m_Floats: []
+    m_Colors:
+    - first:
+        name: _Color
+      second: {r: 0.45894808, g: 0.29374534, b: 0.208387, a: 1}
+--- !u!21 &1320683639
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Custom/RenderBothFaces
+  m_Shader: {fileID: 4800000, guid: bfc325c272aac5e47b2e8297ce5f0bd6, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs: []
+    m_Floats: []
+    m_Colors:
+    - first:
+        name: _Color
+      second: {r: 0.94210446, g: 0.6158464, b: 0.9256115, a: 1}
+--- !u!21 &1355423590
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Custom/RenderBothFaces
+  m_Shader: {fileID: 4800000, guid: bfc325c272aac5e47b2e8297ce5f0bd6, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs: []
+    m_Floats: []
+    m_Colors:
+    - first:
+        name: _Color
+      second: {r: 0.30343476, g: 0.2381938, b: 0.22454949, a: 1}
+--- !u!21 &1364872477
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: GUI/Text Shader
+  m_Shader: {fileID: 10101, guid: 0000000000000000e000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - first:
+        name: _Color
+      second: {r: 0.87013423, g: 0.32801735, b: 0.6046525, a: 1}
+--- !u!43 &1366020343
 Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1937,112 +2026,6 @@ Mesh:
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
---- !u!21 &1303552515
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Custom/RenderBothFaces
-  m_Shader: {fileID: 4800000, guid: bfc325c272aac5e47b2e8297ce5f0bd6, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs: []
-    m_Floats: []
-    m_Colors:
-    - first:
-        name: _Color
-      second: {r: 0.60928005, g: 0.39492875, b: 0.42989248, a: 1}
---- !u!21 &1309490181
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Custom/RenderBothFaces
-  m_Shader: {fileID: 4800000, guid: bfc325c272aac5e47b2e8297ce5f0bd6, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs: []
-    m_Floats: []
-    m_Colors:
-    - first:
-        name: _Color
-      second: {r: 0.45894808, g: 0.29374534, b: 0.208387, a: 1}
---- !u!21 &1320683639
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Custom/RenderBothFaces
-  m_Shader: {fileID: 4800000, guid: bfc325c272aac5e47b2e8297ce5f0bd6, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs: []
-    m_Floats: []
-    m_Colors:
-    - first:
-        name: _Color
-      second: {r: 0.94210446, g: 0.6158464, b: 0.9256115, a: 1}
---- !u!21 &1355423590
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Custom/RenderBothFaces
-  m_Shader: {fileID: 4800000, guid: bfc325c272aac5e47b2e8297ce5f0bd6, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs: []
-    m_Floats: []
-    m_Colors:
-    - first:
-        name: _Color
-      second: {r: 0.30343476, g: 0.2381938, b: 0.22454949, a: 1}
---- !u!21 &1364872477
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: GUI/Text Shader
-  m_Shader: {fileID: 10101, guid: 0000000000000000e000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-    - first:
-        name: _MainTex
-      second:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - first:
-        name: _Color
-      second: {r: 0.87013423, g: 0.32801735, b: 0.6046525, a: 1}
 --- !u!21 &1409739907
 Material:
   serializedVersion: 6
@@ -2275,12 +2258,12 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1975735890}
+      objectReference: {fileID: 887811237}
     - target: {fileID: 33000012166975188, guid: f8a093af85ca3e047a417e5304f34f7e,
         type: 2}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1301306185}
+      objectReference: {fileID: 1366020343}
     - target: {fileID: 114000010571729406, guid: f8a093af85ca3e047a417e5304f34f7e,
         type: 2}
       propertyPath: m_Enabled
@@ -4126,35 +4109,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8ba707c0ed8b772489a948830abeacde, type: 2}
   m_IsPrefabParent: 0
---- !u!21 &1975735890
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Sprites/Default
-  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-    - first:
-        name: _MainTex
-      second:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - first:
-        name: PixelSnap
-      second: 0
-    m_Colors:
-    - first:
-        name: _Color
-      second: {r: 1, g: 1, b: 1, a: 1}
 --- !u!21 &2036144692
 Material:
   serializedVersion: 6

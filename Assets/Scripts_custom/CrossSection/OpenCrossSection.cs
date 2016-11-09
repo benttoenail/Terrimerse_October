@@ -4,20 +4,18 @@ using System;
 
 public class OpenCrossSection : MonoBehaviour {
     VRMenuButton myButton;
-    
+	HoverBeltItems hoverBelt;
+
     public static event Action CrossSectionToggled;
+
+
 
     // Use this for initialization
     void Start () {
 
         myButton = GetComponent<VRMenuButton>();
         myButton.OnClick += HandleClick;
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+		hoverBelt = GetComponentInParent<HoverBeltItems> ();
 	}
 
     void HandleClick(VRMenuEventData e)
@@ -26,5 +24,6 @@ public class OpenCrossSection : MonoBehaviour {
         {
             CrossSectionToggled();
         }
+		hoverBelt.DoClose ();
     }
 }
