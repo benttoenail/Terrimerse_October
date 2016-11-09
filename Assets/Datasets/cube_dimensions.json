@@ -1,0 +1,16 @@
+[
+  {
+    filename: "cube3d_mini.txt",
+    Size_x: 50,
+    Size_y: 20,
+    Size_z: 30,
+    Scale: 100
+  },
+  {
+    filename: "cube3d_large.txt",
+    Size_x: 400,
+    Size_y: 221,
+    Size_z: 271,
+    Scale: 100
+  }
+]

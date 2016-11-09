@@ -12,7 +12,8 @@ public class dataCube : MonoBehaviour {
 	public int size_z = 271; //30
 
 	public int scale = 100;
-	public string dataFilePath = "C:/Users/ResVR/Desktop/Jonathan/3DdataCube/cube3d_large.txt";
+	public string filename = "";
+	public string dataDirectory = "";
 
 	public bool initialized = false;
 
@@ -20,7 +21,7 @@ public class dataCube : MonoBehaviour {
 
 	public void initialize() {
 		dataArray = new float[size_x, size_y, size_z];
-		readDataFile (dataFilePath, dataArray);
+		readDataFile (Application.dataPath + "/"+dataDirectory + "/" + filename, dataArray);
 		initialized = true;
 	}
 
