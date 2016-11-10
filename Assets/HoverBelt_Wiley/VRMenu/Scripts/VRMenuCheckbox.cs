@@ -35,6 +35,9 @@ public class VRMenuCheckbox : VRMenuHoverItem {
 		OnPointerDown += HandleToggle;
 	}
 
+	public void ForceToggle() {
+		state = !state;
+	}
 
 	void HandleToggle(VRMenuEventData e) {
 		state = !state;

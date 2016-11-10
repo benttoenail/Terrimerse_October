@@ -28,6 +28,7 @@ public class CloudBlock : MonoBehaviour {
     IEnumerator UpdateVis(bool val) {
 		yield return new WaitForEndOfFrame ();
 		checkbox.state = val;
+		currentState = val;
 	}
 
     //Call from StateManager
