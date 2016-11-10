@@ -12,6 +12,9 @@ public class updateplane : MonoBehaviour {
 	private Vector3 previousPosition;
 	private GameObject backside;
 
+	private Texture2D mainTexture;
+
+	public bool wasMoved = false;
 
 	// Use this for initialization
 	void Start () {
@@ -29,7 +32,9 @@ public class updateplane : MonoBehaviour {
 			setInitialPosition ();
 
 			//Get initial texture on plane
-			applyTexture(getTexture(getPlaneWidth(), getPlaneHeight(), 0, data.dataArray));
+			mainTexture = makeTexture (getPlaneWidth (), getPlaneHeight ());
+			setDataPixels (mainTexture.width, mainTexture.height, 0, data.dataArray, mainTexture);
+			applyTexture (mainTexture);
 
 			//Initialize Plane Position
 			initPosition = transform.localPosition;
@@ -46,10 +51,10 @@ public class updateplane : MonoBehaviour {
 	void initBackside(){
 		backside = transform.GetChild (0).gameObject;
 		backside.transform.localScale = new Vector3 (1, -1, 1);
-		setBacksideTexture ();
+		refreshBacksideTexture ();
 	}
 
-	void setBacksideTexture() {
+	void refreshBacksideTexture() {
 		backside.GetComponent<Renderer> ().material.mainTexture = GetComponent<Renderer> ().material.mainTexture;
 	}
 
@@ -100,9 +105,14 @@ public class updateplane : MonoBehaviour {
 	/// <param name="h">The height of the plane.</param>
 	/// <param name="pos">The position of the plane (3rd coordinate).</param>
 	/// <param name="data">3D Cube data array.</param>
-	Texture2D getTexture(int w, int h, int pos, float[, ,] data) {
+	/// <param name="texture">Preexisting texture to overwrite (optional).</param>
+	static Texture2D makeTexture(int w, int h) {
 		Texture2D texture = new Texture2D (w, h, TextureFormat.RGBA32, false);
 
+		return texture;
+	}
+
+	void setDataPixels(int w, int h, int pos, float[, ,] dataValues, Texture2D texture) {
 		for (int i = 0; i < w; i++)
 		{
 			for (int j = 0; j < h; j++)
@@ -110,13 +120,13 @@ public class updateplane : MonoBehaviour {
 				switch (sliceType)
 				{
 				case 1:
-					texture.SetPixel (i, j, getColor (data [i, j, pos]));
+					texture.SetPixel (i, j, getColor (dataValues [i, j, pos]));
 					break;
 				case 2:
-					texture.SetPixel (i, j, getColor(data [i, pos, j]));
+					texture.SetPixel (i, j, getColor(dataValues [i, pos, j]));
 					break;
 				case 3:
-					texture.SetPixel (i, j, getColor(data [pos, j, i]));
+					texture.SetPixel (i, j, getColor(dataValues [pos, j, i]));
 					break;
 				default:
 					Debug.Log ("Error getting texture");
@@ -126,7 +136,6 @@ public class updateplane : MonoBehaviour {
 			}
 		}
 		texture.Apply ();
-		return texture;
 	}
 
 	// Applies a given texture to plane
@@ -168,7 +177,14 @@ public class updateplane : MonoBehaviour {
 
 	// Get color from float value:
 	Color getColor(float value) {
-		return new Color(value/25,0,-value/25);
+		//return Color.HSVToRGB (value / 50 + 0.5f, 1, 1);
+		if (value < 0) {
+			return Color.Lerp (data.colorMid, data.colorLow, -value/data.colorThreshold);
+		} else {
+			return Color.Lerp (data.colorMid, data.colorHigh, value/data.colorThreshold);
+		}
+
+		//return new Color(value/25,0,-value/25);
 		//return new Color((value+25)/50,0,0);
 	}
 
@@ -237,13 +253,18 @@ public class updateplane : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (transform.hasChanged && withinRange() && data.initialized) {
-			// Update Texture:
-			applyTexture(getTexture(getPlaneWidth(), getPlaneHeight(), getPlanePosition(), data.dataArray));
-			setBacksideTexture ();
+		if (wasMoved && withinRange() && data.initialized) {
+			if (mainTexture == null) {
+				mainTexture = makeTexture (getPlaneWidth (), getPlaneHeight ());
+				applyTexture (mainTexture);
+				refreshBacksideTexture ();
+			}
+
+			setDataPixels(mainTexture.width, mainTexture.height, getPlanePosition(), data.dataArray, mainTexture);
+
 			// Update Position:
 			previousPosition = transform.localPosition;
-			transform.hasChanged = false;
+			wasMoved = false;
 		}
 
 	}

@@ -28,8 +28,13 @@ public class StateManager : MonoBehaviour {
     private GameObject pointClouds;
 
     private GameObject MainDataSet;
-    // Use this for initialization
+    
+	// A reference to the one instance of this class that should ever exist
+	public static StateManager singleton;
+
     void Start () {
+		// Set singleton reference
+		singleton = this;
 
         //Find the Main DataSet Group
         MainDataSet = GameObject.FindGameObjectWithTag("DataSet");
@@ -73,7 +78,7 @@ public class StateManager : MonoBehaviour {
         //Debug.Log("Tool was updated!  " + _tool.name + " : " + _controller.name);
     }
 
-    void ToggleCrossSection()
+    public void ToggleCrossSection()
     {
         crossSection.SetActive(!crossSection.activeSelf);
         DataSet.SetActive(!DataSet.activeSelf);

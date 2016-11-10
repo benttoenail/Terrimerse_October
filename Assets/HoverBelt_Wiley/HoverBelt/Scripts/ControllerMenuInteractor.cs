@@ -121,7 +121,12 @@ public class ControllerMenuInteractor : MonoBehaviour {
             {
                 currentFunctionality.HandleInput();
             }
-        }
+		}
+
+		// Toggle cross section if grip is pressed, regardless of tool status
+		if(SteamVR_Controller.Input((int)trackedObj.index).GetPressDown(SteamVR_Controller.ButtonMask.Grip)) {
+			StateManager.singleton.ToggleCrossSection ();
+		}
 	}
 
 	public virtual void HandleInput() {
@@ -166,6 +171,11 @@ public class ControllerMenuInteractor : MonoBehaviour {
 		for (int i = intersectedItems.Count - 1; i >= 0; i--) {
 			if (intersectedItems [i] == null || !intersectedItems[i].gameObject.activeSelf) {
 				intersectedItems.RemoveAt (i);
+			}
+		}
+		for (int i = blockingItems.Count - 1; i >= 0; i--) {
+			if (blockingItems [i] == null || !blockingItems[i].gameObject.activeSelf) {
+				blockingItems.RemoveAt (i);
 			}
 		}
 	}

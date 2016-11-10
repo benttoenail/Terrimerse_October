@@ -4,10 +4,6 @@ using Valve.VR;
 using System.Collections.Generic;
 
 public class DrawMeasurement : ControllerFunctionality {
-
-    SteamVR_Controller.Device device;
-    SteamVR_TrackedObject controller;
-
     const float deleteTimeThreshold = 0.5f;
     const float deleteDistThreshold = 5.0f;
     float dragTime = 0.0f;
@@ -29,15 +25,14 @@ public class DrawMeasurement : ControllerFunctionality {
 
     List<MeasureObjectControl> intersectedSpheres = new List<MeasureObjectControl>();
 
-	ControllerMenuInteractor interactor; 
-	void Start() {
+	protected override void Start() {
+		base.Start ();
 		interactor = transform.parent.GetComponentInChildren<ControllerMenuInteractor> ();
 	}
 
 	// Update is called once per frame
 	public override void HandleInput () {
-        controller = gameObject.GetComponentInParent<SteamVR_TrackedObject>();
-        device = SteamVR_Controller.Input((int)controller.index);
+		base.HandleInput ();
         
         triggerHoldDown = device.GetPress(SteamVR_Controller.ButtonMask.Trigger);
         triggerDown = device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger);

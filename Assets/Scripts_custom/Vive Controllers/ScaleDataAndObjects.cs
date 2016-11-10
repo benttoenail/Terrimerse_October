@@ -4,9 +4,6 @@ using Valve.VR;
 
 public class ScaleDataAndObjects : ControllerFunctionality {
 
-    SteamVR_Controller.Device device;
-    SteamVR_TrackedObject controller;
-
     public GameObject player;
     GameObject pivotPoint;
 
@@ -25,26 +22,21 @@ public class ScaleDataAndObjects : ControllerFunctionality {
     bool triggerDown = false;
     bool triggerUp = false;
 
-    ControllerMenuInteractor interactor;
-
     // Use this for initialization
     void Start () {
+		base.Start ();
 
         player = GameObject.FindGameObjectWithTag("Player");
         pivotPoint = new GameObject();
         pivotPoint.transform.localScale = new Vector3(1, 1, 1);
         dataSet = GameObject.FindGameObjectWithTag("DataSet");
 
-        interactor = transform.parent.GetComponentInChildren<ControllerMenuInteractor>();
-
     }
 
     // Update is called once per frame
     public override void HandleInput()
     {
-
-        controller = gameObject.GetComponentInParent<SteamVR_TrackedObject>();
-        device = SteamVR_Controller.Input((int)controller.index);
+		base.HandleInput ();
 
         //get Starting scale
         //Create New Gameobject

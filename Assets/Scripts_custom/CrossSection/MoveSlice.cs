@@ -24,9 +24,12 @@ public class MoveSlice : MonoBehaviour {
 
     public GameObject crossSection;
     Vector3 oriPos;
+
+	updateplane planeComponent;
     void Start()
     {
         oriPos = transform.position;
+		planeComponent = GetComponent<updateplane> ();
     }
 
 
@@ -47,7 +50,7 @@ public class MoveSlice : MonoBehaviour {
             SteamVR_Controller.Device device = SteamVR_Controller.Input((int)to.index);
             if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
             {
-                to.GetComponentInChildren<ToolTracker>().DeActivateTool();
+                //to.GetComponentInChildren<ToolTracker>().DeActivateTool(); Commented out to temp. fix a glitch
                 to.GetComponentInChildren<ControllerMenuInteractor>().AddBlock(gameObject);
                 devicesGrabbedBy.Add(new GrabDescriptor(to, device));
             }
@@ -56,14 +59,25 @@ public class MoveSlice : MonoBehaviour {
         // Check for grab stop
         for (int i = devicesGrabbedBy.Count - 1; i >= 0; i--)
         {
-            if (devicesGrabbedBy[i].device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger))
+			if (devicesGrabbedBy[i].device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger))
             {
-                devicesGrabbedBy[i].to.GetComponentInChildren<ToolTracker>().ActivateTool();
+                //devicesGrabbedBy[i].to.GetComponentInChildren<ToolTracker>().ActivateTool(); Commented out to temp. fix a glitch
                 devicesGrabbedBy[i].to.GetComponentInChildren<ControllerMenuInteractor>().RemoveBlock(gameObject);
                 devicesGrabbedBy.RemoveAt(i);
             }
         }
     }
+
+	void OnDisable() {
+		// When this object is set inactive, clear its grab status
+		foreach (GrabDescriptor desc in devicesGrabbedBy)
+		{
+			desc.to.GetComponentInChildren<ToolTracker>().ActivateTool();
+			desc.to.GetComponentInChildren<ControllerMenuInteractor>().RemoveBlock(gameObject);
+		}
+		devicesGrabbedBy.Clear ();
+
+	}
 
     void UpdateGrabMovement()
     {
@@ -77,6 +91,10 @@ public class MoveSlice : MonoBehaviour {
 
             // Update previous position
             grab.prevPos = grab.to.transform.position;
+
+			if (planeComponent != null) {
+				planeComponent.wasMoved = true;
+			}
         }
 
 

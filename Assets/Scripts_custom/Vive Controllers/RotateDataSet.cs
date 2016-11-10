@@ -4,9 +4,6 @@ using Valve.VR;
 
 public class RotateDataSet : ControllerFunctionality {
 
-    SteamVR_Controller.Device device;
-    SteamVR_TrackedObject controller;
-
     public GameObject dataSet;
     public float rotationSpeed = 0.5f;
 
@@ -18,20 +15,16 @@ public class RotateDataSet : ControllerFunctionality {
     bool triggerDown = false;
     bool triggerUp = false;
 
-    ControllerMenuInteractor interactor;
-
     // Use this for initialization
     void Start () {
+		base.Start ();
         dataSet = GameObject.FindGameObjectWithTag("DataSet");
-        interactor = transform.parent.GetComponentInChildren<ControllerMenuInteractor>();
     }
 
     // Update is called once per frame
     public override void HandleInput()
     {
-
-        controller = gameObject.GetComponentInParent<SteamVR_TrackedObject>();
-        device = SteamVR_Controller.Input((int)controller.index);
+		base.HandleInput ();
 
         dataSetRotation.x = controller.transform.position.x;
 

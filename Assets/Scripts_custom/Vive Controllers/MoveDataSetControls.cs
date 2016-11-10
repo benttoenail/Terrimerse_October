@@ -6,9 +6,6 @@ using Valve.VR;
 
 public class MoveDataSetControls : ControllerFunctionality {
 
-	SteamVR_Controller.Device device;
-	SteamVR_TrackedObject controller; // some new changes
-
 	public GameObject dataSet;
 
 	float y;
@@ -20,19 +17,15 @@ public class MoveDataSetControls : ControllerFunctionality {
     bool triggerDown = false;
     bool triggerUp = false;
 
-    ControllerMenuInteractor interactor;
-
     // Use this for initialization
     void Start () {
+		base.Start ();
         dataSet = GameObject.FindGameObjectWithTag("DataSet");
-        interactor = transform.parent.GetComponentInChildren<ControllerMenuInteractor>();
     }
 
 	// Update is called once per frame
 	public override void HandleInput () {
-
-        controller = gameObject.GetComponentInParent<SteamVR_TrackedObject>();
-        device = SteamVR_Controller.Input ((int)controller.index);
+		base.HandleInput ();
 
         if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger)){
            
