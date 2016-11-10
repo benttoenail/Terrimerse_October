@@ -72,11 +72,11 @@ public class MoveSlice : MonoBehaviour {
 		// When this object is set inactive, clear its grab status
 		foreach (GrabDescriptor desc in devicesGrabbedBy)
 		{
-			desc.to.GetComponentInChildren<ToolTracker>().ActivateTool();
+			//desc.to.GetComponentInChildren<ToolTracker>().ActivateTool();
 			desc.to.GetComponentInChildren<ControllerMenuInteractor>().RemoveBlock(gameObject);
 		}
 		devicesGrabbedBy.Clear ();
-
+		objectsIntersecting.Clear ();
 	}
 
     void UpdateGrabMovement()

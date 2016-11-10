@@ -649,9 +649,9 @@ MonoBehaviour:
   scale: 100
   filename: cube3d_large.voxel
   dataDirectory: Datasets
-  colorLow: {r: 0.2509804, g: 0.5019608, b: 1, a: 1}
+  colorLow: {r: 0.2509804, g: 0.36078432, b: 1, a: 1}
   colorMid: {r: 0, g: 0, b: 0, a: 1}
-  colorHigh: {r: 1, g: 0.2509804, b: 0.5019608, a: 1}
+  colorHigh: {r: 1, g: 0.2509804, b: 0.36078432, a: 1}
   colorThreshold: 20
   initialized: 0
 --- !u!114 &114000011708386414
@@ -667,6 +667,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 114000011532764648}
   sliceType: 3
+  wasMoved: 0
 --- !u!114 &114000011871443580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -680,6 +681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 114000011532764648}
   sliceType: 1
+  wasMoved: 0
 --- !u!114 &114000012157608588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -693,6 +695,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 114000011532764648}
   sliceType: 2
+  wasMoved: 0
 --- !u!114 &114000012642504286
 MonoBehaviour:
   m_ObjectHideFlags: 1
