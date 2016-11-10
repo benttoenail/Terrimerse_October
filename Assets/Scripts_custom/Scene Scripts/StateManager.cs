@@ -39,8 +39,10 @@ public class StateManager : MonoBehaviour {
         //Find the Main DataSet Group
         MainDataSet = GameObject.FindGameObjectWithTag("DataSet");
 
-        //Turn off CrossSection on Start
-        crossSection.SetActive(false);
+		// Load data file
+		crossSection.GetComponentInChildren<dataCube>().Initialize();
+		//Turn off CrossSection on Start
+		crossSection.SetActive (false);
 
         //Set Starting Horizon colors
         skyBox.SetFloat("_Exponent1", topHorizon);

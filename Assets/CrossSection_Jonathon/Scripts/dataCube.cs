@@ -23,9 +23,21 @@ public class dataCube : MonoBehaviour {
 
 	public float[, ,] dataArray;
 
-	public void initialize() {
+	public GameObject planeContainer;
+
+	public void Initialize() {
 		readDataFile (Application.dataPath + "/"+dataDirectory + "/" + filename);
 		initialized = true;
+	}
+
+	public void Start() {
+		if(!initialized) {
+			readDataFile (Application.dataPath + "/"+dataDirectory + "/" + filename);
+			initialized = true;
+		}
+		foreach (updateplane plane in planeContainer.GetComponentsInChildren<updateplane>()) {
+			plane.Initialize ();
+		}
 	}
 
 

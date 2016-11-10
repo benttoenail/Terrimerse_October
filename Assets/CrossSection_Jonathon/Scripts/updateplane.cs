@@ -16,36 +16,29 @@ public class updateplane : MonoBehaviour {
 
 	public bool wasMoved = false;
 
+	bool initialized = false;
+
 	// Use this for initialization
-	void Start () {
-
-		// Initialize data
-		if( !data.initialized ) {
-			data.initialize ();
-		}
-
-		// Setup plane if data is initialized
-		if (data.initialized) {
-			//Set size of plane:
-			setSize(data, sliceType);
-			//Set position of plane:
-			setInitialPosition ();
-
-			//Get initial texture on plane
-			mainTexture = makeTexture (getPlaneWidth (), getPlaneHeight ());
-			setDataPixels (mainTexture.width, mainTexture.height, 0, data.dataArray, mainTexture);
-			applyTexture (mainTexture);
-
-			//Initialize Plane Position
-			initPosition = transform.localPosition;
-			previousPosition = initPosition;
-
-			// Initialize backside
-			initBackside ();
+	public void Initialize () {
 		
-		}
-			
-		transform.hasChanged = false;
+		//Set size of plane:
+		setSize(data, sliceType);
+		//Set position of plane:
+		setInitialPosition ();
+
+		//Get initial texture on plane
+		mainTexture = makeTexture (getPlaneWidth (), getPlaneHeight ());
+		setDataPixels (mainTexture.width, mainTexture.height, 0, data.dataArray, mainTexture);
+		applyTexture (mainTexture);
+
+		//Initialize Plane Position
+		initPosition = transform.localPosition;
+		previousPosition = initPosition;
+
+		// Initialize backside
+		initBackside ();
+
+		initialized = true;
 	}
 
 	void initBackside(){
@@ -253,6 +246,10 @@ public class updateplane : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (!initialized) {
+			return;
+		}
+
 		if (wasMoved && withinRange() && data.initialized) {
 			if (mainTexture == null) {
 				mainTexture = makeTexture (getPlaneWidth (), getPlaneHeight ());
