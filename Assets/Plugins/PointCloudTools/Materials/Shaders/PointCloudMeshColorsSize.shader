@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 // PointCloudMeshColor+Size
 // *** DOESNT WORK WITH DX11 MODE ***
 // http://unitycoder.com
@@ -45,7 +47,7 @@ Shader "UnityCoder/PointCloudMeshColorSize"
 			v2f vert (appdata v)
 			{
 				v2f o;
-				o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.pos = UnityObjectToClipPos(v.vertex);
 				o.color = v.color;
 				o.size = _PointSize;
 				return o;

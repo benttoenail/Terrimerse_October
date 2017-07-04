@@ -67,7 +67,7 @@ public class DrawMeasurement : ControllerFunctionality {
 
 				measureToolInstance.transform.parent = GameObject.FindGameObjectWithTag ("DataSet").transform; //Will have to find the Dataset again!  
                  
-				sphere02 = measureToolInstance.transform.FindChild ("Sphere_02");
+				sphere02 = measureToolInstance.transform.Find ("Sphere_02");
 
             }
             origin = interactor.transform.position;
@@ -94,7 +94,7 @@ public class DrawMeasurement : ControllerFunctionality {
         {
             if(sphere02 != null)
             {
-                measureToolInstance.transform.FindChild("Sphere_01").gameObject.AddComponent<MeasureObjectControl>();
+                measureToolInstance.transform.Find("Sphere_01").gameObject.AddComponent<MeasureObjectControl>();
                 sphere02.transform.parent = measureToolInstance.transform;
                 sphere02.gameObject.AddComponent<MeasureObjectControl>();
                 sphere02.GetComponentInParent<MeasureTool>().MakeText();

@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 // some parts of the source: http://forum.unity3d.com/threads/5785-shader-SetGlobalVector?p=43611&viewfull=1#post43611
 // modified by http://unitycoder.com/blog/
 
@@ -42,7 +44,7 @@ Shader "UnityCoder/VertexColorPseudoLight"
 //			float3 dir = normalize(v.vertex.xyz-_Pos);
 //			v.vertex.xyz += dir * (distMulti*_Amount);
 //			v.vertex.xz += dir * (distMulti*_Amount);
-			o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+			o.pos = UnityObjectToClipPos(v.vertex);
 			// fakelight effect for now..
 			float distLight = (_LightLimit-min(_LightLimit,distance(v.vertex.xyz, _LightPos)))/_LightLimit; //distance falloff
 			o.color = v.color-(1-distLight);

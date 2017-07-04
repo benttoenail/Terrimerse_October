@@ -85,7 +85,7 @@ public class ViveControls : MonoBehaviour {
 			//int childCount = DataSet.transform.childCount;
 			toolPrefab.transform.parent = GameObject.Find ("DataSet-2-Subsets").transform;
 
-            sphere02 = toolPrefab.transform.FindChild("Sphere_02");
+            sphere02 = toolPrefab.transform.Find("Sphere_02");
             sphere02.transform.parent = trackedObj.transform;
         }
 

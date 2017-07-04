@@ -106,7 +106,7 @@ public class StateManager : MonoBehaviour {
 
         //Set all clouds back to active
         //Need to access PCListTransform - but will only be available when PCList is opened
-        Transform pcListTransform = PCList.transform.FindChild("PCListTransform");
+        Transform pcListTransform = PCList.transform.Find("PCListTransform");
         
         foreach(Transform c in pcListTransform)
         {
